@@ -57,10 +57,10 @@ Method to run the module
 def run():
 
     # Max recent tweets pulls x amount of most recent tweets from user
-    text_query = 'colston statue'
+    text_query = 'Robert the Bruce statue'
     count = 50000
 
-    since_date = '2020-06-09'
+    since_date = '2020-06-13'
     until_date = '2020-06-16'
 
     # Calling function to query X amount of relevant tweets and create a CSV file
