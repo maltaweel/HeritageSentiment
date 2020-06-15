@@ -43,10 +43,10 @@ def text_query_to_csv(text_query, since_date, until_date, count):
     tweets = got.manager.TweetManager.getTweets(tweetCriteria)
     
     # Creating list of chosen tweet data
-    text_tweets = [[tweet.date, tweet.text, tweet.retweets, tweet.hashtags,tweet.username,tweet.geo] for tweet in tweets]
+    text_tweets = [[tweet.date, tweet.id,tweet.permalink,tweet.text, tweet.retweets, tweet.hashtags,tweet.username,tweet.geo] for tweet in tweets]
     
     # Creation of dataframe from tweets
-    tweets_df = pd.DataFrame(text_tweets, columns = ['Datetime', 'Text','Retweets','Hashtags','Username','Geolocation'])
+    tweets_df = pd.DataFrame(text_tweets, columns = ['Datetime', 'Id','Link','Text','Retweets','Hashtags','Username','Geolocation'])
 
     # Converting tweets dataframe to csv file
     tweets_df.to_csv(path+'/{}-{}k-tweets.csv'.format(text_query, int(count/1000)), sep=',')
@@ -56,7 +56,7 @@ Method to run the module
 '''           
 def run():
 
-    # Max recent tweets pulls x amount of most recent tweets from that user
+    # Max recent tweets pulls x amount of most recent tweets from user
     text_query = 'colston statue'
     count = 50000
 

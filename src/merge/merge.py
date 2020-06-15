@@ -19,6 +19,8 @@ def loadData():
     retweets=[]
     hashtags=[]
     locations=[]
+    ids=[]
+    links=[]
     
   
     for fil in os.listdir(pathway):
@@ -29,12 +31,12 @@ def loadData():
             for row in reader:   
                 date=row['Datetime']
                 text=row['Text']
+                iid=row['ID']
+                link=row['Link']
                 username=row['Username']
                 hashtag=row['Hashtags']
                 retweet=row['Retweets']
-                
- #               seller=row['Seller']
-#                image=row['Image']
+
                 location=row['Geolocation']
                 
 
@@ -48,18 +50,20 @@ def loadData():
                     texts.append(text)
                     retweets.append(retweet)
                     hashtags.append(hashtag)
+                    ids.append(iid)
+                    links.append(link)
                         
           
                 
                 
-    return dates,texts,usernames,retweets,hashtags,locations    
+    return dates,ids,links,texts,usernames,retweets,hashtags,locations    
 
 '''
 Method to print the results of the output
 '''                   
-def printResults(dates,texts,usernames,retweets,hashtags,locations):
+def printResults(dates,ids,links,texts,usernames,retweets,hashtags,locations):
 
-    fieldnames = ['Datetime','Text','Username','Retweets','Hashtags','Geolocation']
+    fieldnames = ['Datetime','Id','Link','Text','Username','Retweets','Hashtags','Geolocation']
     pn=os.path.abspath(__file__)
     pn=pn.split("src")[0]
     fileOutput=os.path.join(pn,'results',"totalTweets.csv")
@@ -71,7 +75,7 @@ def printResults(dates,texts,usernames,retweets,hashtags,locations):
     
         for i in range(0,len(texts)):
    
-            writer.writerow({'Datetime':str(dates[i]),'Text':str(texts[i]),'Username':str(usernames[i]),'Retweets':str(retweets[i]),
+            writer.writerow({'Datetime':str(dates[i]),'ID':str(ids[i]),'Link':str(links[i]),'Text':str(texts[i]),'Username':str(usernames[i]),'Retweets':str(retweets[i]),
                              'Hashtags':str(hashtags[1]),'Geolocation':str(locations[i])})
                     
 '''
@@ -79,8 +83,8 @@ Method to run the module
 '''           
 def run():
 
-    dates,texts,usernames,retweets,hashtags,locations=loadData()
-    printResults(dates,texts,usernames,retweets,hashtags,locations)
+    dates,ids,links,texts,usernames,retweets,hashtags,locations=loadData()
+    printResults(dates,ids,links,texts,usernames,retweets,hashtags,locations)
     print("Finished")
    
 if __name__ == '__main__':
