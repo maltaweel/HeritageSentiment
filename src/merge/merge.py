@@ -63,7 +63,7 @@ Method to print the results of the output
 '''                   
 def printResults(dates,ids,links,texts,usernames,retweets,hashtags,locations):
 
-    fieldnames = ['Datetime','Id','Link','Text','Username','Retweets','Hashtags','Geolocation']
+    fieldnames = ['Datetime','ID','Link','Text','Username','Retweets','Hashtags','Geolocation']
     pn=os.path.abspath(__file__)
     pn=pn.split("src")[0]
     fileOutput=os.path.join(pn,'results',"totalTweets.csv")
