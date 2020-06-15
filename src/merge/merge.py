@@ -17,6 +17,7 @@ def loadData():
     dates=[]
     usernames=[]
     retweets=[]
+    hashtags=[]
     locations=[]
     
   
@@ -29,7 +30,8 @@ def loadData():
                 date=row['Datetime']
                 text=row['Text']
                 username=row['Username']
-                retweets=row['Retweets']
+                hashtag=row['Hashtags']
+                retweet=row['Retweets']
                 
  #               seller=row['Seller']
 #                image=row['Image']
@@ -44,19 +46,20 @@ def loadData():
                     usernames.append(username)
                     locations.append(location)
                     texts.append(text)
-                    retweets.append(retweets)
+                    retweets.append(retweet)
+                    hashtags.append(hashtag)
                         
           
                 
                 
-    return dates,texts,usernames,retweets,locations    
+    return dates,texts,usernames,retweets,hashtags,locations    
 
 '''
 Method to print the results of the output
 '''                   
-def printResults(dates,texts,usernames,retweets,locations):
+def printResults(dates,texts,usernames,retweets,hashtags,locations):
 
-    fieldnames = ['Datetime','Text','Username','Retweets','Geolocation']
+    fieldnames = ['Datetime','Text','Username','Retweets','Hashtags','Geolocation']
     pn=os.path.abspath(__file__)
     pn=pn.split("src")[0]
     fileOutput=os.path.join(pn,'results',"totalTweets.csv")
@@ -69,15 +72,15 @@ def printResults(dates,texts,usernames,retweets,locations):
         for i in range(0,len(texts)):
    
             writer.writerow({'Datetime':str(dates[i]),'Text':str(texts[i]),'Username':str(usernames[i]),'Retweets':str(retweets[i]),
-                             'Geolocation':str(locations[i])})
+                             'Hashtags':str(hashtags[1]),'Geolocation':str(locations[i])})
                     
 '''
 Method to run the module
 '''           
 def run():
 
-    dates,texts,usernames,retweets,locations=loadData()
-    printResults(dates,texts,usernames,retweets,locations)
+    dates,texts,usernames,retweets,hashtags,locations=loadData()
+    printResults(dates,texts,usernames,retweets,hashtags,locations)
     print("Finished")
    
 if __name__ == '__main__':

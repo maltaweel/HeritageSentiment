@@ -29,7 +29,7 @@ def username_tweets_to_csv(username, count):
 # Function that pulls tweets based on a general search query and turns to csv file
 
 # Parameters: (text query you want to search), (max number of most recent tweets to pull from)
-def text_query_to_csv(text_query, count):
+def text_query_to_csv(text_query, since_date, until_date, count):
     
     pn=os.path.abspath(__file__)
     pn=pn.split("src")[0]  
@@ -43,23 +43,31 @@ def text_query_to_csv(text_query, count):
     tweets = got.manager.TweetManager.getTweets(tweetCriteria)
     
     # Creating list of chosen tweet data
-    text_tweets = [[tweet.date, tweet.text, tweet.retweets, tweet.username,tweet.geo] for tweet in tweets]
+    text_tweets = [[tweet.date, tweet.text, tweet.retweets, tweet.hashtags,tweet.username,tweet.geo] for tweet in tweets]
     
     # Creation of dataframe from tweets
-    tweets_df = pd.DataFrame(text_tweets, columns = ['Datetime', 'Text','Retweets','Username','Geolocation'])
+    tweets_df = pd.DataFrame(text_tweets, columns = ['Datetime', 'Text','Retweets','Hashtags','Username','Geolocation'])
 
     # Converting tweets dataframe to csv file
     tweets_df.to_csv(path+'/{}-{}k-tweets.csv'.format(text_query, int(count/1000)), sep=',')
     
-    
-# Max recent tweets pulls x amount of most recent tweets from that user
-text_query = 'colston statue'
-count = 50000
+'''
+Method to run the module
+'''           
+def run():
 
-since_date = '2020-06-07'
-until_date = '2020-06-08'
+    # Max recent tweets pulls x amount of most recent tweets from that user
+    text_query = 'colston statue'
+    count = 50000
 
-# Calling function to query X amount of relevant tweets and create a CSV file
-text_query_to_csv(text_query, count)
+    since_date = '2020-06-07'
+    until_date = '2020-06-08'
 
-print('Finished')
+    # Calling function to query X amount of relevant tweets and create a CSV file
+    text_query_to_csv(text_query, since_date, until_date, count)
+
+    print('Finished')
+   
+if __name__ == '__main__':
+    run()
+       
