@@ -31,7 +31,7 @@ def loadData():
             for row in reader:   
                 date=row['Datetime']
                 text=row['Text']
-                iid=row['ID']
+                iid=row['Id']
                 link=row['Link']
                 username=row['Username']
                 hashtag=row['Hashtags']

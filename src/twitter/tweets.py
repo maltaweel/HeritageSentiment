@@ -60,8 +60,8 @@ def run():
     text_query = 'colston statue'
     count = 50000
 
-    since_date = '2020-06-07'
-    until_date = '2020-06-08'
+    since_date = '2020-06-09'
+    until_date = '2020-06-16'
 
     # Calling function to query X amount of relevant tweets and create a CSV file
     text_query_to_csv(text_query, since_date, until_date, count)
