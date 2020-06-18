@@ -52,11 +52,12 @@ def cleanData():
                             continue
                         if 'https:' in f:
                             continue
-                        f=tokenizer.tokenize(f)
-                        tokens.append(f)
-                        
-                    text=''
-                    text=text.join(str(v) for v in tokens)
+                        f=tokenizer.tokenize(f)[0]
+                        tokens.append(f+" ")
+                    
+                    text=""
+                    text=text.join(tokens)
+                    
                     row['Text']=text
                     rows.append(row)
                 
