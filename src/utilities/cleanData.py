@@ -52,7 +52,11 @@ def cleanData():
                             continue
                         if 'https:' in f:
                             continue
-                        f=tokenizer.tokenize(f)[0]
+                        try:
+                            f=tokenizer.tokenize(f)[0]
+                        except:
+                            continue
+                            
                         tokens.append(f+" ")
                     
                     text=""
