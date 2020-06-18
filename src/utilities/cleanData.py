@@ -83,7 +83,7 @@ def output(data,fileOutput):
         for f in data:
             writer.writerow({'Datetime': str(f['Datetime']),
                              'ID':str(f['ID']),'Link':str(f['Link']),
-                             'Text':str(f['Text']),'Username':str(f['Retweets']),'':str(f['Hashtags']),
+                             'Text':str(f['Text']),'Username':str(f['Username']),'Retweets':str(f['Retweets']),'Hashtags':str(f['Hashtags']),
                               'Geolocation':str(f['Geolocation'])})
     
         
