@@ -59,7 +59,7 @@ def cleanData():
                     words = [w.replace('/', '') for w in words]
                     words = [w.replace('[', '') for w in words]
                     words = [w.replace(']', '') for w in words] 
-                    words = [w for w in filtered_sentence if len(w) > 1]
+                    words = [w for w in words if len(w) > 2]
                         
                     w = " ".join(words)
 
