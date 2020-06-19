@@ -67,6 +67,7 @@ class Sentiment:
     
     def run(self):
         self.loadData()
+        print('Finished')
 
 if __name__ == '__main__':
     s=Sentiment()
