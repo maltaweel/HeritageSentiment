@@ -5,6 +5,9 @@ Created on Jun 18, 2020
 '''
 import os
 from os import listdir
+import collections
+from collections import Counter
+from nltk.tokenize import word_tokenize 
 
 import csv
 
@@ -40,6 +43,7 @@ class Sentiment:
                     continue
                 
                 i=0
+                texts=[]
                 with open(os.path.join(directory,f),'r') as csvfile:
                     reader = csv.DictReader(csvfile)
             
@@ -51,15 +55,39 @@ class Sentiment:
                         
                         rows.append(row)
                         
-                        i+=1
-                        print(i)
-                        
+                        twords=word_tokenize(text)
+                        for tt in twords:
+                            texts.append(tt)
+                
+                word_counts = Counter(texts)
+                
+                t=word_counts.most_common(10)
+                
+                self.most_common_output(t,os.path.join(output_directory,'common_ten'+"_"+f))
                 fle=os.path.join(output_directory,'sentiment'+"_"+f)       
                 self.output(rows,fle)
                 
         except IOError:
             print ("Could not read file:", csvfile)
     
+    def most_common_output(self,t,fileOutput):
+        
+        fieldnames=[]
+        
+        output={}
+        for l, d in t:
+            fieldnames.append(l)
+            output[l]=d
+           
+            
+        
+        with open(fileOutput, 'wt') as csvf:
+            writer = csv.DictWriter(csvf, fieldnames=fieldnames)
+
+            writer.writeheader()  
+            writer.writerow(output)
+           
+        
     def output(self,data,fileOutput):
         fieldnames = ['Datetime','ID','Score','Link','Text','Username','Retweets','Hashtags','Geolocation']
         with open(fileOutput, 'wt') as csvf:
