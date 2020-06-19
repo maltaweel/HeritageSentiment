@@ -13,13 +13,13 @@ from sklearn.metrics.cluster.tests.test_supervised import score_funcs
 
 
 class Sentiment:
-    
+    afinn = Afinn()
     def get_affinity_score(self, tweet):
-        afinn = Afinn()
+        
         score=0
         
         if len(tweet)>0:
-            score=afinn.score(tweet) / len(tweet)
+            score=self.afinn.score(tweet) / len(tweet)
             return score
         else:
             return score
@@ -35,6 +35,11 @@ class Sentiment:
         try:
             for f in listdir(directory):
                 rows=[]
+                
+                if '.csv' not in f:
+                    continue
+                
+                i=0
                 with open(os.path.join(directory,f),'r') as csvfile:
                     reader = csv.DictReader(csvfile)
             
@@ -45,7 +50,10 @@ class Sentiment:
                         row['Score']=score
                         
                         rows.append(row)
-                
+                        
+                        i+=1
+                        print(i)
+                        
                 fle=os.path.join(output_directory,'sentiment'+"_"+f)       
                 self.output(rows,fle)
                 

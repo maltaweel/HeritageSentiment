@@ -43,9 +43,22 @@ def cleanData():
                     
                     word_tokens = word_tokenize(text) 
   
-                    filtered_sentence = [w for w in word_tokens if not w in stop_words] 
+                    filtered_sentence = [w for w in word_tokens if not w in stop_words]
                     filtered_sentence = [w for w in filtered_sentence if not w.startswith("@")]
-                    filtered_sentence = [w for w in filtered_sentence if not w.startswith("https")]
+                    filtered_sentence = [w for w in filtered_sentence if not w.startswith("http")]
+                    words = [w.replace('(', '') for w in filtered_sentence]
+                    words = [w.replace(')', '') for w in words]
+                    words = [w.replace('?', '') for w in words]
+                    words = [w.replace(',', '') for w in words]
+                    words = [w.replace("'", '') for w in words]
+                    words = [w.replace('"', '') for w in words]
+                    words = [w.replace('!', '') for w in words]
+                    words = [w.replace(':', '') for w in words]
+                    words = [w.replace('&amp;', '') for w in words]
+                    words = [w.replace('...', '') for w in words]
+                    words = [w.replace('/', '') for w in words]
+                    words = [w.replace('[', '') for w in words]
+                    words = [w.replace(']', '') for w in words] 
                     words = [w for w in filtered_sentence if len(w) > 1]
                         
                     w = " ".join(words)
