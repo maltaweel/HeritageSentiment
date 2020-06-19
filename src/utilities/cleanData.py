@@ -44,25 +44,13 @@ def cleanData():
                     word_tokens = word_tokenize(text) 
   
                     filtered_sentence = [w for w in word_tokens if not w in stop_words] 
-                    tokenizer = RegexpTokenizer(r'\w+')
-                    
-                    tokens=[]
-                    for f in filtered_sentence:
-                        if '#' in f:
-                            continue
-                        if 'https:' in f:
-                            continue
-                        try:
-                            f=tokenizer.tokenize(f)[0]
-                        except:
-                            continue
-                            
-                        tokens.append(f+" ")
-                    
-                    text=""
-                    text=text.join(tokens)
-                    
-                    row['Text']=text
+                    filtered_sentence = [w for w in filtered_sentence if not w.startswith("@")]
+                    filtered_sentence = [w for w in filtered_sentence if not w.startswith("https")]
+                    words = [w for w in filtered_sentence if len(w) > 1]
+                        
+                    w = " ".join(words)
+
+                    row['Text']=w
                     rows.append(row)
                 
                 fle=os.path.join(output_directory,'modified'+"_"+f)   
