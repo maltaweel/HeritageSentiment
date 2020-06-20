@@ -105,17 +105,24 @@ class Sentiment:
             for t in time:
                 inpt=time[t]
                 dd=day[t]
-                word_counts = Counter(dd)
+                texts=[]
+
+                for tt in dd:
+                    twords=word_tokenize(tt)
+                    for w in twords:
+                        texts.append(w)
+                
+                word_counts = Counter(texts)
                 
                 z=word_counts.most_common(15)
-                tt=[l for l in z]
+                tz=[l for l, t in z]
                 mean=np.mean(inpt)
                 std=np.std(inpt)
                 median=np.median(inpt)
             
                 writer.writerow({'Date': str(t),
                              'Mean Score':str(mean),'Median Score':str(median),
-                             'Standard Deviation':str(std),'Top 15': str(tt)})
+                             'Standard Deviation':str(std),'Top 15': str(tz)})
         
     def most_common_output(self,t,fileOutput):
         
