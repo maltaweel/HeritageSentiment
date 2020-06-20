@@ -80,7 +80,7 @@ class Sentiment:
                 
                 t=word_counts.most_common(100)
                 
-                self.most_common_output(t,os.path.join(output_directory,'common_ten'+"_"+f))
+                self.most_common_output(t,os.path.join(output_directory,'common_100'+"_"+f))
                 fle=os.path.join(output_directory,'sentiment'+"_"+f)       
                 self.output(rows,fle)
                 
