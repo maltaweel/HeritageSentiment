@@ -59,7 +59,7 @@ class Sentiment:
                         score=self.get_affinity_score(text)
                         
                         inputT=[]
-                        if  date_time_obj in time:
+                        if  date_time_obj.date() in time:
                             inputT=time[date_time_obj.date()]
                             inputT.append(score)
         
