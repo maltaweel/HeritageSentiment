@@ -47,6 +47,7 @@ class Sentiment:
              
                 texts=[]
                 time={}
+                day={}
                 with open(os.path.join(directory,f),'r') as csvfile:
                     reader = csv.DictReader(csvfile)
             
@@ -59,14 +60,19 @@ class Sentiment:
                         score=self.get_affinity_score(text)
                         
                         inputT=[]
+                        dd=[]
                         if  date_time_obj.date() in time:
                             inputT=time[date_time_obj.date()]
+                            dd=day[date_time_obj.date()]
                             inputT.append(score)
+                            dd.append(text)
         
                         else:
                             inputT.append(score)
+                            dd.append(text)
                         
                         time[date_time_obj.date()]=inputT
+                        day[date_time_obj.date()]=dd
                         
                         row['Score']=score
                         
@@ -84,13 +90,13 @@ class Sentiment:
                 fle=os.path.join(output_directory,'sentiment'+"_"+f)       
                 self.output(rows,fle)
                 
-                self.doTimeBasedOutput(time,output_directory,f)
+                self.doTimeBasedOutput(time,output_directory,day,f)
                 
         except IOError:
             print ("Could not read file:", csvfile)
     
-    def doTimeBasedOutput(self,time,output_directory,f):
-        fieldnames = ['Date','Mean Score','Median Score','Standard Deviation']
+    def doTimeBasedOutput(self,time,output_directory,day,f):
+        fieldnames = ['Date','Mean Score','Median Score','Standard Deviation','Top 15']
         fileOutput=os.path.join(output_directory,'sentiment_over_time'+"_"+f) 
         
         with open(fileOutput, 'wt') as csvf:
@@ -98,13 +104,18 @@ class Sentiment:
             writer.writeheader() 
             for t in time:
                 inpt=time[t]
+                dd=day[t]
+                word_counts = Counter(dd)
+                
+                z=word_counts.most_common(15)
+                tt=[l for l in z]
                 mean=np.mean(inpt)
                 std=np.std(inpt)
                 median=np.median(inpt)
             
                 writer.writerow({'Date': str(t),
                              'Mean Score':str(mean),'Median Score':str(median),
-                             'Standard Deviation':str(std)})
+                             'Standard Deviation':str(std),'Top 15': str(tt)})
         
     def most_common_output(self,t,fileOutput):
         
