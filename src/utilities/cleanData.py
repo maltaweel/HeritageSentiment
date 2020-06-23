@@ -24,7 +24,8 @@ def cleanData():
     pn=pn.split("src")[0]  
     directory=os.path.join(pn,'results')
     output_directory=os.path.join(pn,'modified')
-    
+    pattern = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
+                          
     files={}
     try:
         for f in listdir(directory):
@@ -32,20 +33,25 @@ def cleanData():
             with open(os.path.join(directory,f),'r') as csvfile:
                 reader = csv.DictReader(csvfile)
             
+            
                 for row in reader:
                     text=row['Text']
                     
                     
-                    row['Text']=text
                     
                     text=text.lower()
                     text=re.sub('(\\b[A-Za-z] \\b|\\b [A-Za-z]\\b)', '', text)
+                    text=pattern.sub("",text)
                     
                     word_tokens = word_tokenize(text) 
-  
+                    
+                    
                     filtered_sentence = [w for w in word_tokens if not w in stop_words]
                     filtered_sentence = [w for w in filtered_sentence if not w.startswith("@")]
                     filtered_sentence = [w for w in filtered_sentence if not w.startswith("http")]
+                    
+                
+                                         
                     words = [w.replace('(', '') for w in filtered_sentence]
                     words = [w.replace(')', '') for w in words]
                     words = [w.replace('?', '') for w in words]
