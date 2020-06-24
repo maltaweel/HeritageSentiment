@@ -96,7 +96,7 @@ class Sentiment:
             print ("Could not read file:", csvfile)
     
     def doTimeBasedOutput(self,time,output_directory,day,f):
-        fieldnames = ['Date','Mean Score','Median Score','Standard Deviation','Top 15']
+        fieldnames = ['Date','Mean Score','Median Score','Tweets','Standard Deviation','Top 15']
         fileOutput=os.path.join(output_directory,'sentiment_over_time'+"_"+f) 
         
         with open(fileOutput, 'wt') as csvf:
@@ -107,6 +107,7 @@ class Sentiment:
                 dd=day[t]
                 texts=[]
 
+                n=len(dd)
                 for tt in dd:
                     twords=word_tokenize(tt)
                     for w in twords:
@@ -121,7 +122,7 @@ class Sentiment:
                 median=np.median(inpt)
             
                 writer.writerow({'Date': str(t),
-                             'Mean Score':str(mean),'Median Score':str(median),
+                             'Mean Score':str(mean),'Median Score':str(median),'Tweets':str(n),
                              'Standard Deviation':str(std),'Top 15': str(tz)})
         
     def most_common_output(self,t,fileOutput):

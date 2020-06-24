@@ -49,9 +49,7 @@ def cleanData():
                     filtered_sentence = [w for w in word_tokens if not w in stop_words]
                     filtered_sentence = [w for w in filtered_sentence if not w.startswith("@")]
                     filtered_sentence = [w for w in filtered_sentence if not w.startswith("http")]
-                    
-                
-                                         
+           
                     words = [w.replace('(', '') for w in filtered_sentence]
                     words = [w.replace(')', '') for w in words]
                     words = [w.replace('?', '') for w in words]
