@@ -10,7 +10,6 @@ import collections
 from collections import Counter
 from nltk.tokenize import word_tokenize 
 import datetime
-
 import csv
 
 from afinn import Afinn
@@ -48,6 +47,7 @@ class Sentiment:
                 texts=[]
                 time={}
                 day={}
+                retwts={}
                 with open(os.path.join(directory,f),'r') as csvfile:
                     reader = csv.DictReader(csvfile)
             
@@ -57,22 +57,30 @@ class Sentiment:
                         
                         date_time_obj = datetime.datetime.strptime(date_time, '%Y-%m-%d')
                         row['Datetime']=date_time_obj.date()
+                        retweets=int(row['Retweets'])
                         score=self.get_affinity_score(text)
                         
                         inputT=[]
                         dd=[]
+                        retweet=[]
                         if  date_time_obj.date() in time:
                             inputT=time[date_time_obj.date()]
                             dd=day[date_time_obj.date()]
+                            
                             inputT.append(score)
                             dd.append(text)
+                            
+                            retweet=retwts[date_time_obj.date()]
+                            retweet.append(retweets)
         
                         else:
                             inputT.append(score)
                             dd.append(text)
+                            retweet.append(retweets)
                         
                         time[date_time_obj.date()]=inputT
                         day[date_time_obj.date()]=dd
+                        retwts[date_time_obj.date()]=retweet
                         
                         row['Score']=score
                         
@@ -90,21 +98,23 @@ class Sentiment:
                 fle=os.path.join(output_directory,'sentiment'+"_"+f)       
                 self.output(rows,fle)
                 
-                self.doTimeBasedOutput(time,output_directory,day,f)
+                self.doTimeBasedOutput(time,output_directory,day,retwts,f)
                 
         except IOError:
             print ("Could not read file:", csvfile)
     
-    def doTimeBasedOutput(self,time,output_directory,day,f):
-        fieldnames = ['Date','Mean Score','Median Score','Tweets','Standard Deviation','Top 15']
+    def doTimeBasedOutput(self,time,output_directory,day,retwts,f):
+        fieldnames = ['Date','Mean Score','Median Score','Tweets', 'Retweets','Standard Deviation','Top 15']
         fileOutput=os.path.join(output_directory,'sentiment_over_time'+"_"+f) 
         
+        tts=[]
         with open(fileOutput, 'wt') as csvf:
             writer = csv.DictWriter(csvf, fieldnames=fieldnames)
             writer.writeheader() 
             for t in time:
                 inpt=time[t]
                 dd=day[t]
+                rtweets=retwts[t]
                 texts=[]
 
                 n=len(dd)
@@ -112,19 +122,28 @@ class Sentiment:
                     twords=word_tokenize(tt)
                     for w in twords:
                         texts.append(w)
-                
+                        tts.append(w)
+                        
                 word_counts = Counter(texts)
+                
                 
                 z=word_counts.most_common(15)
                 tz=[l for l, t in z]
                 mean=np.mean(inpt)
                 std=np.std(inpt)
                 median=np.median(inpt)
+                
+                rts=np.sum(rtweets)
             
                 writer.writerow({'Date': str(t),
                              'Mean Score':str(mean),'Median Score':str(median),'Tweets':str(n),
-                             'Standard Deviation':str(std),'Top 15': str(tz)})
+                             'Retweets':str(rts),'Standard Deviation':str(std),'Top 15': str(tz)})
         
+       
+   
+   
+        
+    
     def most_common_output(self,t,fileOutput):
         
         fieldnames=[]
