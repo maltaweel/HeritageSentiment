@@ -4,6 +4,7 @@ Created on Jun 28, 2020
 @author: mark
 '''
 import os
+import sys
 import csv
 from os import listdir
 import datetime
@@ -18,7 +19,7 @@ import matplotlib.pyplot as plt
 
 class Wordcloud():
 
-    def loadData(self):
+    def loadData(self, start, end):
         pn=os.path.abspath(__file__)
         pn=pn.split("src")[0]  
         directory=os.path.join(pn,'modified')
@@ -41,9 +42,15 @@ class Wordcloud():
                         date_time=row['Datetime'].split(" ")[0]
                         
                         date_time_obj = datetime.datetime.strptime(date_time, '%Y-%m-%d')
+                        
+                        st = datetime.datetime.strptime(start, '%Y-%m-%d')
+                        ed = datetime.datetime.strptime(end, '%Y-%m-%d')
+                        
                         row['Datetime']=date_time_obj.date()
                         
-                        texts+=" "+text
+                        if st<=date_time_obj:
+                            if  ed>date_time_obj:
+                                texts+=" "+text
                        
         except IOError:
             print ("Could not read file:", csvfile)
@@ -60,11 +67,11 @@ class Wordcloud():
         plt.axis("off")
         plt.show()
         
-    def run(self):
-        texts=self.loadData()
+    def run(self, argv):
+        texts=self.loadData(argv[2],argv[4])
         self.wordCloud(texts)
         print('Finished')
 
 if __name__ == '__main__':
     wc=Wordcloud()
-    wc.run()
+    wc.run(sys.argv)
