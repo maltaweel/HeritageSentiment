@@ -25,10 +25,11 @@ class Wordcloud():
         directory=os.path.join(pn,'modified')
       
 
-        texts=''
+       
         try:
             for f in listdir(directory):
-               
+                
+                texts=''
                 if '.csv' not in f:
                     continue
                 
@@ -52,11 +53,11 @@ class Wordcloud():
                             if  ed>date_time_obj:
                                 texts+=" "+text
                        
+                self.wordCloud(texts)
         except IOError:
             print ("Could not read file:", csvfile)
     
-        return texts
-    
+       
     def wordCloud(self,text):
         # Create and generate a word cloud image:
         
@@ -69,7 +70,6 @@ class Wordcloud():
         
     def run(self, argv):
         texts=self.loadData(argv[2],argv[4])
-        self.wordCloud(texts)
         print('Finished')
 
 if __name__ == '__main__':
