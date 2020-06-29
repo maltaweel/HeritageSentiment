@@ -69,7 +69,7 @@ class Wordcloud():
         plt.show()
         
     def run(self, argv):
-        texts=self.loadData(argv[2],argv[4])
+        self.loadData(argv[2],argv[4])
         print('Finished')
 
 if __name__ == '__main__':
