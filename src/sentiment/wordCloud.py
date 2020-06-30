@@ -59,8 +59,8 @@ class Wordcloud():
     
        
     def wordCloud(self,text):
+       
         # Create and generate a word cloud image:
-        
         wordcloud = WordCloud().generate(text)
 
         #   Display the generated image:
@@ -69,7 +69,7 @@ class Wordcloud():
         plt.show()
         
     def run(self, argv):
-        self.loadData(argv[2],argv[4])
+        self.loadData(argv[1],argv[2])
         print('Finished')
 
 if __name__ == '__main__':

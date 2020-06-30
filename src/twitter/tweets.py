@@ -1,9 +1,13 @@
 '''
+Module to scrape twitter data from given statues.
+
+
 Created on Jun 13, 2020
 
 @author: mark
 '''
 import os
+import sys
 import GetOldTweets3 as got
 import pandas as pd
 
@@ -54,14 +58,14 @@ def text_query_to_csv(text_query, since_date, until_date, count):
 '''
 Method to run the module
 '''           
-def run():
+def run(argv):
 
     # Max recent tweets pulls x amount of most recent tweets from user
-    text_query = 'colston statue'
-    count = 50000
+    text_query = argv[1]
+    count = int(argv[2])
 
-    since_date = '2020-06-17'
-    until_date = '2020-06-21'
+    since_date = argv[3]
+    until_date = argv[4]
 
     # Calling function to query X amount of relevant tweets and create a CSV file
     text_query_to_csv(text_query, since_date, until_date, count)
@@ -69,5 +73,5 @@ def run():
     print('Finished')
    
 if __name__ == '__main__':
-    run()
+    run(sys.argv)
        
