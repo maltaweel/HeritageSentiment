@@ -1,4 +1,6 @@
 '''
+Module for creating a world cloud of data in the HeritageScrape/modified folder.
+
 Created on Jun 28, 2020
 
 @author: mark
