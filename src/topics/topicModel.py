@@ -9,6 +9,7 @@ import os
 from os import listdir
 
 import datetime
+
 from nltk.tokenize import RegexpTokenizer as word_tokenize
 from gensim.models import CoherenceModel, LdaModel, HdpModel
 
@@ -17,6 +18,9 @@ import pyLDAvis.gensim
 import gensim
 from gensim.utils import lemmatize
 from gensim.corpora import Dictionary
+
+pn=os.path.abspath(__file__)
+pn=pn.split("src")[0]
 
 class TopicModel():
     
@@ -73,6 +77,31 @@ class TopicModel():
         
         return rows
     
+    '''Output results of the analysis
+        i-- the topic number
+        model-- the model used (e.g., lda, hdp)
+    '''
+    def printResults(self,i,results,model):
+        
+        
+        #os.chdir('../')
+        
+        filename=os.path.join(pn,'topic_model_results','analysis_results_'+model+str(i)+".csv")
+        
+        fieldnames = ['Topic','Term','Value']
+        
+        
+        with open(filename, 'wb') as csvf:
+            writer = csv.DictWriter(csvf, fieldnames=fieldnames)
+
+            writer.writeheader()
+            
+            for key in results:
+                v=results[key]
+                tn=key.split(":")[0]
+                kt=key.split(":")[1]
+                writer.writerow({'Topic':str(tn),'Term': str(kt.encode("utf-8")),'Value':str(v)})
+    
     def runModels(self,number_of_topics, corpus, dictionary):
         
         #hdp model
@@ -82,23 +111,23 @@ class TopicModel():
 
         hdptopics = hdpmodel.show_topics(num_topics=number_of_topics)
 
-        result_dict=addTotalTermResults(hdptopics)
+    #   result_dict=addTotalTermResults(hdptopics)
             
         #add results to total kept in a list     
-        addToResults(result_dict)
+    #   addToResults(result_dict)
     
-        printResults(number_of_topics,'hdp')
+        self.printResults(number_of_topics,hdptopics,'hdp')
         
      
         #lda model
         ldamodel = LdaModel(corpus=corpus, num_topics=number_of_topics, id2word=dictionary)
        
-        ldamodel.save('lda'+num+'.model')
+        ldamodel.save('lda'+number_of_topics+'.model')
         ldatopics = ldamodel.show_topics(num_topics=number_of_topics)
     
-        result_dict=addTotalTermResults(ldatopics)    
-        addToResults(result_dict)
-        printResults(number_of_topics,'lda')
+    #    result_dict=addTotalTermResults(ldatopics)    
+    #   addToResults(result_dict)
+        self.printResults(number_of_topics,ldatopics,'lda')
     
     
         visualisation2 = pyLDAvis.gensim.prepare(ldamodel, corpus, dictionary)
@@ -106,7 +135,7 @@ class TopicModel():
         location=os.path.join(pn,'results')
      
         #visualize outputs
-        pyLDAvis.save_html(visualisation2, os.path.join(location,'LDA_Visualization'+str(i)+'.html')) 
+        pyLDAvis.save_html(visualisation2, os.path.join(location,'LDA_Visualization'+str(number_of_topics)+'.html')) 
 '''
 Method to run the module
 '''           
