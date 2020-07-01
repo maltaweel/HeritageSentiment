@@ -24,7 +24,7 @@ pn=pn.split("src")[0]
 
 class TopicModel():
     
-    def process_texts(self, texts):
+    def process_text(self, texts):
         bigram = gensim.models.Phrases(texts) 
  
         
