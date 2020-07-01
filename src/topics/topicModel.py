@@ -8,14 +8,41 @@ import csv
 import os
 from os import listdir
 
-def loadData(self):
+import datetime
+from nltk.tokenize import RegexpTokenizer as word_tokenize
+from gensim.models import CoherenceModel, LdaModel, HdpModel
+
+import re
+import pyLDAvis.gensim
+import gensim
+from gensim.utils import lemmatize
+from gensim.corpora import Dictionary
+
+class TopicModel():
+    
+    def process_texts(self, texts):
+        bigram = gensim.models.Phrases(texts) 
+ 
+        
+    
+        texts = [bigram[line] for line in texts]
+        texts = [[word.split('/')[0] for word in lemmatize(' '.join(line), allowed_tags=re.compile('(NN)'), min_length=3)] for line in texts]
+
+        dictionary = Dictionary(texts)
+        corpus = [dictionary.doc2bow(text) for text in texts]
+        
+        return corpus, dictionary
+        
+        
+    def loadData(self,start,end):
         pn=os.path.abspath(__file__)
         pn=pn.split("src")[0]  
         directory=os.path.join(pn,'modified')
         
+        rows=[]
         try:
             for f in listdir(directory):
-                rows=[]
+                
                 
                 if '.csv' not in f:
                     continue
@@ -25,21 +52,74 @@ def loadData(self):
             
                     for row in reader:
                         text=row['Text']
+                        date=row['Datetime'].split(" ")[0]
+                        
+                        date_time_obj = datetime.datetime.strptime(date, '%Y-%m-%d')
+                        start_d=datetime.datetime.strptime(start, '%Y-%m-%d')
+                        end_d=datetime.datetime.strptime(end, '%Y-%m-%d')
+                        
+                        date=date_time_obj.date()
+                        startD=start_d.date()
+                        endD=end_d.date()
+                        
+                        if date>=startD:
+                            if date<endD:
+                                text_t = word_tokenize(text)
+                                rows.append(text_t)       
+                        
                         
         except IOError:
             print ("Could not read file:", csvfile)               
-                        
+        
+        return rows
+    
+    def runModels(self,number_of_topics, corpus, dictionary):
+        
+        #hdp model
+        hdpmodel = HdpModel(corpus=corpus, id2word=dictionary)
+
+        hdpmodel.show_topics()
+
+        hdptopics = hdpmodel.show_topics(num_topics=number_of_topics)
+
+        result_dict=addTotalTermResults(hdptopics)
+            
+        #add results to total kept in a list     
+        addToResults(result_dict)
+    
+        printResults(number_of_topics,'hdp')
+        
+     
+        #lda model
+        ldamodel = LdaModel(corpus=corpus, num_topics=number_of_topics, id2word=dictionary)
+       
+        ldamodel.save('lda'+num+'.model')
+        ldatopics = ldamodel.show_topics(num_topics=number_of_topics)
+    
+        result_dict=addTotalTermResults(ldatopics)    
+        addToResults(result_dict)
+        printResults(number_of_topics,'lda')
+    
+    
+        visualisation2 = pyLDAvis.gensim.prepare(ldamodel, corpus, dictionary)
+   
+        location=os.path.join(pn,'results')
+     
+        #visualize outputs
+        pyLDAvis.save_html(visualisation2, os.path.join(location,'LDA_Visualization'+str(i)+'.html')) 
 '''
 Method to run the module
 '''           
 def run(argv):
-
-    since_date = argv[1]
-    until_date = argv[2]
-
-   
- 
-
+    tm=TopicModel()
+    number_of_topics = argv[1]
+    start=argv[2]
+    end=argv[3]
+    texts=tm.loadData(start,end)
+    corpus, dictionary=tm.process_text(texts)
+    tm.runModels(number_of_topics,corpus, dictionary)
+    
+    
     print('Finished')
    
 if __name__ == '__main__':
