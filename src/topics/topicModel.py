@@ -11,6 +11,7 @@ from os import listdir
 import datetime
 
 from nltk.tokenize import RegexpTokenizer as word_tokenize
+from nltk.stem import WordNetLemmatizer
 from gensim.models import CoherenceModel, LdaModel, HdpModel
 
 import re
@@ -21,17 +22,36 @@ from gensim.corpora import Dictionary
 
 pn=os.path.abspath(__file__)
 pn=pn.split("src")[0]
+lemmatizer = WordNetLemmatizer()
 
 class TopicModel():
     
-    def process_text(self, texts):
-        bigram = gensim.models.Phrases(texts) 
- 
-        
-    
+    def first_process(self,texts):
+
+        for t in texts:
+            t=yield gensim.utils.simple_preprocess(t, deacc=True, min_len=3)
+            
+    def process_text(self, full_text, texts):
+            
+        bigram = gensim.models.Phrases(full_text, min_count=5, threshold=100) # higher threshold fewer phrases.
+        bigram = gensim.models.phrases.Phraser(bigram)
+ #      trigram = gensim.models.phrases.Phraser(full_text, threshold=100)
+         
         texts = [bigram[line] for line in texts]
         texts = [[word.split('/')[0] for word in lemmatize(' '.join(line), allowed_tags=re.compile('(NN)'), min_length=3)] for line in texts]
-
+        
+        '''
+        lemmatized_output=[]
+        for line in texts:
+            w=''
+            for word in line:
+                if word==" ":
+                    l=lemmatizer.lemmatize(w)
+                    lemmatized_output.append(l)
+                    w=''
+                else:
+         '''
+        
         dictionary = Dictionary(texts)
         corpus = [dictionary.doc2bow(text) for text in texts]
         
@@ -55,7 +75,7 @@ class TopicModel():
                     reader = csv.DictReader(csvfile)
             
                     for row in reader:
-                        text=row['Text']
+                        text=row['Text'].decode('utf-8')
                         date=row['Datetime'].split(" ")[0]
                         
                         date_time_obj = datetime.datetime.strptime(date, '%Y-%m-%d')
@@ -68,8 +88,7 @@ class TopicModel():
                         
                         if date>=startD:
                             if date<endD:
-                                text_t = word_tokenize(text)
-                                rows.append(text_t)       
+                                rows.append(text)       
                         
                         
         except IOError:
@@ -77,16 +96,65 @@ class TopicModel():
         
         return rows
     
+    """
+    Method for using a coherence model to look at topic coherence for LDA models.
+    
+    Parameters:
+    ----------
+    dictionary-- Gensim dictionary
+    corpus-- Gensim corpus
+    limit-- topic limit
+    
+    Returns:
+    -------
+    lm_list : List of LDA topic models
+    c_v : Coherence values corresponding to the LDA model with respective number of topics
+    """
+    def evaluate_graph(self, dictionary, corpus, texts, limit):
+    
+        c_v = []
+        lm_list = []
+        for num_topics in range(1, limit):
+            lm = LdaModel(corpus=corpus, num_topics=num_topics, id2word=dictionary)
+            lm_list.append(lm)
+            cm = CoherenceModel(model=lm, texts=texts, dictionary=dictionary, coherence='c_v')
+            c_v.append(cm.get_coherence())
+            del cm
+            
+        return lm_list, c_v
+
+    '''
+    Method to print csv output results of the evaluations conducted 
+    modList-- the model evaluated
+    results-- the result scores
+    i-- the index output desired
+    '''
+    
+    def printEvaluation(self,modList,results,i,start,end):
+       
+        filename=os.path.join(pn,'topic_model_results','evaluationTotal'+str(i)+"_"+start+"_"+end+".csv")   
+        
+        fieldnames = ['Model','Score']
+    
+        with open(filename, 'wb') as csvf:
+                writer = csv.DictWriter(csvf, fieldnames=fieldnames)
+
+                writer.writeheader()
+                for i in range(0,len(modList)):
+        
+                    writer.writerow({'Model':str(modList[i]),'Score': str(results[i])})
+                
     '''Output results of the analysis
         i-- the topic number
         model-- the model used (e.g., lda, hdp)
     '''
-    def printResults(self,i,results,model):
+    def printResults(self,i,results,model,start,end):
         
         
         #os.chdir('../')
         
-        filename=os.path.join(pn,'topic_model_results','analysis_results_'+model+str(i)+".csv")
+        filename=os.path.join(pn,'topic_model_results','analysis_results_'+model+str(i)+"_"+start+"_"+
+                              end+".csv")
         
         fieldnames = ['Topic','Term','Value']
         
@@ -96,13 +164,17 @@ class TopicModel():
 
             writer.writeheader()
             
-            for key in results:
-                v=results[key]
-                tn=key.split(":")[0]
-                kt=key.split(":")[1]
-                writer.writerow({'Topic':str(tn),'Term': str(kt.encode("utf-8")),'Value':str(v)})
+            for l in results:
+                n=l[0]
+                v=l[1]
+                vvs=v.split("+")
+                for vv in vvs:
+                    vvt=vv.split("*")
+                    t=vvt[1]
+                    val=vvt[0]
+                    writer.writerow({'Topic':str(n),'Term': str(t.encode("utf-8")),'Value':str(val)})
     
-    def runModels(self,number_of_topics, corpus, dictionary):
+    def runModels(self,number_of_topics, corpus, dictionary,start,end):
         
         #hdp model
         hdpmodel = HdpModel(corpus=corpus, id2word=dictionary)
@@ -116,7 +188,7 @@ class TopicModel():
         #add results to total kept in a list     
     #   addToResults(result_dict)
     
-        self.printResults(number_of_topics,hdptopics,'hdp')
+        self.printResults(number_of_topics,hdptopics,'hdp',start,end)
         
      
         #lda model
@@ -127,27 +199,42 @@ class TopicModel():
     
     #    result_dict=addTotalTermResults(ldatopics)    
     #   addToResults(result_dict)
-        self.printResults(number_of_topics,ldatopics,'lda')
+        self.printResults(number_of_topics,ldatopics,'lda',start,end)
     
     
         visualisation2 = pyLDAvis.gensim.prepare(ldamodel, corpus, dictionary)
    
-        location=os.path.join(pn,'results')
+        location=os.path.join(pn,'topic_model_results')
      
         #visualize outputs
-        pyLDAvis.save_html(visualisation2, os.path.join(location,'LDA_Visualization'+str(number_of_topics)+'.html')) 
+        pyLDAvis.save_html(visualisation2, os.path.join(location,'LDA_Visualization'+str(number_of_topics)+"_"+start+
+                                                        "_"+end+'.html')) 
+        
+        
+        
 '''
 Method to run the module
 '''           
 def run(argv):
+    
+    #get run arguments
     tm=TopicModel()
     number_of_topics = argv[1]
     start=argv[2]
     end=argv[3]
-    texts=tm.loadData(start,end)
-    corpus, dictionary=tm.process_text(texts)
-    tm.runModels(number_of_topics,corpus, dictionary)
     
+    #load and process text
+    texts=tm.loadData(start,end)
+    full_text=texts
+    texts=tm.first_process(texts)
+    corpus, dictionary=tm.process_text(full_text,texts)
+    
+    #run topic models
+    tm.runModels(number_of_topics,corpus, dictionary,start,end)
+    
+    #output coherence model
+    lmlist, c_v=tm.evaluate_graph(dictionary, corpus, texts, number_of_topics)
+    tm.printEvaluation(lmlist,c_v,number_of_topics,start,end)
     
     print('Finished')
    
