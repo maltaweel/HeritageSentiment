@@ -126,7 +126,6 @@ class TopicModel():
     results-- the result scores
     i-- the index output desired
     '''
-    
     def printEvaluation(self,modList,results,i,start,end):
        
         filename=os.path.join(pn,'topic_model_results','evaluationTotal'+str(i)+"_"+start+"_"+end+".csv")   
@@ -192,7 +191,7 @@ class TopicModel():
         
      
         #lda model
-        ldamodel = LdaModel(corpus=corpus, num_topics=number_of_topics, id2word=dictionary,passes=20, eval_every=1,iterations=400)
+        ldamodel = LdaModel(corpus=corpus, num_topics=number_of_topics, id2word=dictionary,passes=20,iterations=400)
        
         ldamodel.save('lda'+number_of_topics+'.model')
         ldatopics = ldamodel.show_topics(num_topics=int(number_of_topics))
