@@ -35,25 +35,22 @@ class TopicModel():
             
         bigram = gensim.models.Phrases(full_text, min_count=5, threshold=100) # higher threshold fewer phrases.
         bigram = gensim.models.phrases.Phraser(bigram)
- #      trigram = gensim.models.phrases.Phraser(full_text, threshold=100)
+ #      trigram = gensim.tsmodels.phrases.Phraser(full_text, threshold=100)
          
         texts = [bigram[line] for line in texts]
-        texts = [[word.split('/')[0] for word in lemmatize(' '.join(line), allowed_tags=re.compile('(NN)'), min_length=3)] for line in texts]
+  #     texts = [[word.split('/')[0] for word in lemmatize(' '.join(line), allowed_tags=re.compile('(NN)'), min_length=3)] for line in texts]
+  #      texts_lemma = ' '.join([lemmatizer.lemmatize(w) for w in texts])
         
-        '''
-        lemmatized_output=[]
+        texts_lemma=[]
         for line in texts:
-            w=''
             for word in line:
-                if word==" ":
-                    l=lemmatizer.lemmatize(w)
-                    lemmatized_output.append(l)
-                    w=''
-                else:
-         '''
+                l=lemmatizer.lemmatize(word)
+                texts_lemma.append(l)
         
-        dictionary = Dictionary(texts)
-        corpus = [dictionary.doc2bow(text) for text in texts]
+        texts_lemma = [d.split() for d in texts_lemma]
+        dictionary = Dictionary(texts_lemma)
+        
+        corpus = [dictionary.doc2bow(text) for text in texts_lemma]
         
         return corpus, dictionary
         
@@ -71,11 +68,11 @@ class TopicModel():
                 if '.csv' not in f:
                     continue
                 
-                with open(os.path.join(directory,f),'r') as csvfile:
+                with open(os.path.join(directory,f),'rt') as csvfile:
                     reader = csv.DictReader(csvfile)
             
                     for row in reader:
-                        text=row['Text'].decode('utf-8')
+                        text=row['Text'] #.decode('utf-8')
                         date=row['Datetime'].split(" ")[0]
                         
                         date_time_obj = datetime.datetime.strptime(date, '%Y-%m-%d')
@@ -114,7 +111,7 @@ class TopicModel():
     
         c_v = []
         lm_list = []
-        for num_topics in range(1, limit):
+        for num_topics in range(1, limit*2):
             lm = LdaModel(corpus=corpus, num_topics=num_topics, id2word=dictionary)
             lm_list.append(lm)
             cm = CoherenceModel(model=lm, texts=texts, dictionary=dictionary, coherence='c_v')
@@ -136,7 +133,7 @@ class TopicModel():
         
         fieldnames = ['Model','Score']
     
-        with open(filename, 'wb') as csvf:
+        with open(filename, 'w') as csvf:
                 writer = csv.DictWriter(csvf, fieldnames=fieldnames)
 
                 writer.writeheader()
@@ -159,7 +156,7 @@ class TopicModel():
         fieldnames = ['Topic','Term','Value']
         
         
-        with open(filename, 'wb') as csvf:
+        with open(filename, 'w') as csvf:
             writer = csv.DictWriter(csvf, fieldnames=fieldnames)
 
             writer.writeheader()
@@ -170,6 +167,8 @@ class TopicModel():
                 vvs=v.split("+")
                 for vv in vvs:
                     vvt=vv.split("*")
+                    if len(vvt)<2:
+                        continue
                     t=vvt[1]
                     val=vvt[0]
                     writer.writerow({'Topic':str(n),'Term': str(t.encode("utf-8")),'Value':str(val)})
@@ -179,23 +178,24 @@ class TopicModel():
         #hdp model
         hdpmodel = HdpModel(corpus=corpus, id2word=dictionary)
 
-        hdpmodel.show_topics()
+        hdpmodel.print_topics(num_topics=int(number_of_topics), num_words=10)
 
-        hdptopics = hdpmodel.show_topics(num_topics=number_of_topics)
+        hdptopics = hdpmodel.show_topics(num_topics=int(number_of_topics))
 
     #   result_dict=addTotalTermResults(hdptopics)
             
         #add results to total kept in a list     
     #   addToResults(result_dict)
     
+        #output results
         self.printResults(number_of_topics,hdptopics,'hdp',start,end)
         
      
         #lda model
-        ldamodel = LdaModel(corpus=corpus, num_topics=number_of_topics, id2word=dictionary)
+        ldamodel = LdaModel(corpus=corpus, num_topics=number_of_topics, id2word=dictionary,passes=20, eval_every=1,iterations=400)
        
         ldamodel.save('lda'+number_of_topics+'.model')
-        ldatopics = ldamodel.show_topics(num_topics=number_of_topics)
+        ldatopics = ldamodel.show_topics(num_topics=int(number_of_topics))
     
     #    result_dict=addTotalTermResults(ldatopics)    
     #   addToResults(result_dict)
@@ -233,7 +233,7 @@ def run(argv):
     tm.runModels(number_of_topics,corpus, dictionary,start,end)
     
     #output coherence model
-    lmlist, c_v=tm.evaluate_graph(dictionary, corpus, texts, number_of_topics)
+    lmlist, c_v=tm.evaluate_graph(dictionary, corpus, texts, int(number_of_topics))
     tm.printEvaluation(lmlist,c_v,number_of_topics,start,end)
     
     print('Finished')
