@@ -140,21 +140,18 @@ class TopicModel():
         
                     writer.writerow({'Model':str(modList[i]),'Score': str(results[i])})
                 
-    '''Output results of the analysis
-        i-- the topic number
-        model-- the model used (e.g., lda, hdp)
+    '''
+    Output results of the analysis
+    i-- the topic number
+    model-- the model used (e.g., lda, hdp)
     '''
     def printResults(self,i,results,model,start,end):
-        
-        
-        #os.chdir('../')
-        
+
         filename=os.path.join(pn,'topic_model_results','analysis_results_'+model+str(i)+"_"+start+"_"+
                               end+".csv")
         
         fieldnames = ['Topic','Term','Value']
-        
-        
+
         with open(filename, 'w') as csvf:
             writer = csv.DictWriter(csvf, fieldnames=fieldnames)
 
@@ -172,13 +169,13 @@ class TopicModel():
                     val=vvt[0]
                     writer.writerow({'Topic':str(n),'Term': str(t.encode("utf-8")),'Value':str(val)})
     
+    
     def runModels(self,number_of_topics, corpus, dictionary,start,end):
         
         #hdp model
         hdpmodel = HdpModel(corpus=corpus, id2word=dictionary)
-
+        
         hdpmodel.print_topics(num_topics=int(number_of_topics), num_words=10)
-
         hdptopics = hdpmodel.show_topics(num_topics=int(number_of_topics))
 
     #   result_dict=addTotalTermResults(hdptopics)
@@ -189,14 +186,13 @@ class TopicModel():
         #output results
         self.printResults(number_of_topics,hdptopics,'hdp',start,end)
         
-     
         #lda model
         ldamodel = LdaModel(corpus=corpus, num_topics=number_of_topics, id2word=dictionary,passes=20,iterations=400)
        
         ldamodel.save('lda'+number_of_topics+'.model')
         ldatopics = ldamodel.show_topics(num_topics=int(number_of_topics))
     
-    #    result_dict=addTotalTermResults(ldatopics)    
+    #   result_dict=addTotalTermResults(ldatopics)    
     #   addToResults(result_dict)
         self.printResults(number_of_topics,ldatopics,'lda',start,end)
     

@@ -1,10 +1,18 @@
+'''
+Module to merge data from scraped twitter data.
+
+Created on Jun 13, 2020
+
+@author: mark
+'''
+
 import os
 
 import csv
 
 
 '''
-Method to load data from input files in the totalData folder.
+Method to load data from input files in the output folder. Method merges files in the folder, keeping all the data columns and removing duplicate values.
 '''
 def loadData():
     

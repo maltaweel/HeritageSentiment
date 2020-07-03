@@ -1,5 +1,8 @@
 '''
-Module to scrape twitter data from given statues.
+Module to scrape twitter data. User provide inputer parameters that include:
+
+1) a text query to search in twitter, 2) the maximum number of tweets to scrape,
+3) the date to start a search, 4) the date to end a search
 
 
 Created on Jun 13, 2020
@@ -11,9 +14,12 @@ import sys
 import GetOldTweets3 as got
 import pandas as pd
 
-# Function the pulls tweets from a specific username and turns to csv file
+'''
+ Method that pulls tweets from a specific username and turns to csv file.
 
-# Parameters: (list of twitter usernames), (max number of most recent tweets to pull from)
+@param username- the username 
+@param count- maximum number of most recent tweets to pull from
+'''
 def username_tweets_to_csv(username, count):
     # Creation of query object
     tweetCriteria = got.manager.TweetCriteria().setUsername(username)\
@@ -32,7 +38,14 @@ def username_tweets_to_csv(username, count):
     
 # Function that pulls tweets based on a general search query and turns to csv file
 
-# Parameters: (text query you want to search), (max number of most recent tweets to pull from)
+'''
+Method to apply a text querty based on start and end date and maximum amount.
+
+@param text_query- the query being searched
+@param since_date- the date to begin a search
+@param util_date- the date to end a search (but not including)
+@param count- maximum number of most recent tweets to pull from
+'''
 def text_query_to_csv(text_query, since_date, until_date, count):
     
     pn=os.path.abspath(__file__)
@@ -57,6 +70,8 @@ def text_query_to_csv(text_query, since_date, until_date, count):
     
 '''
 Method to run the module
+
+@param argv- the input arguments to execute the run
 '''           
 def run(argv):
 
