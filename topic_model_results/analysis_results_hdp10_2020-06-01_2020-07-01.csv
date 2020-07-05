@@ -1,0 +1,201 @@
+Topic,Term,Value
+0,b'statue ',0.020
+0,b'colston ', 0.018
+0,b'bristol ', 0.008
+0,b'edward ', 0.007
+0,b'slave ', 0.005
+0,b'people ', 0.003
+0,b'history ', 0.003
+0,b'colstonstatue ', 0.003
+0,b'trader ', 0.003
+0,b'city ', 0.002
+0,b'year ', 0.002
+0,b'via ', 0.001
+0,b'pulled ', 0.001
+0,b'council ', 0.001
+0,b'replace ', 0.001
+0,b'protester ', 0.001
+0,b'would ', 0.001
+0,b'petition ', 0.001
+0,b'one ', 0.001
+0,b'slavery', 0.001
+1,b'statue ',0.020
+1,b'colston ', 0.018
+1,b'bristol ', 0.008
+1,b'edward ', 0.007
+1,b'slave ', 0.005
+1,b'people ', 0.003
+1,b'history ', 0.003
+1,b'colstonstatue ', 0.003
+1,b'trader ', 0.003
+1,b'city ', 0.002
+1,b'year ', 0.002
+1,b'via ', 0.001
+1,b'pulled ', 0.001
+1,b'council ', 0.001
+1,b'protester ', 0.001
+1,b'replace ', 0.001
+1,b'petition ', 0.001
+1,b'toppling ', 0.001
+1,b'one ', 0.001
+1,b'slavery', 0.001
+2,b'statue ',0.020
+2,b'colston ', 0.018
+2,b'edward ', 0.008
+2,b'bristol ', 0.008
+2,b'slave ', 0.005
+2,b'people ', 0.004
+2,b'history ', 0.003
+2,b'colstonstatue ', 0.003
+2,b'trader ', 0.003
+2,b'city ', 0.002
+2,b'year ', 0.002
+2,b'via ', 0.001
+2,b'pulled ', 0.001
+2,b'protester ', 0.001
+2,b'council ', 0.001
+2,b'replace ', 0.001
+2,b'petition ', 0.001
+2,b'slavery ', 0.001
+2,b'would ', 0.001
+2,b'one', 0.001
+3,b'statue ',0.020
+3,b'colston ', 0.018
+3,b'bristol ', 0.008
+3,b'edward ', 0.007
+3,b'slave ', 0.005
+3,b'people ', 0.003
+3,b'history ', 0.003
+3,b'colstonstatue ', 0.003
+3,b'trader ', 0.003
+3,b'city ', 0.002
+3,b'year ', 0.002
+3,b'via ', 0.001
+3,b'council ', 0.001
+3,b'pulled ', 0.001
+3,b'petition ', 0.001
+3,b'replace ', 0.001
+3,b'protester ', 0.001
+3,b'one ', 0.001
+3,b'would ', 0.001
+3,b'slavery', 0.001
+4,b'statue ',0.020
+4,b'colston ', 0.018
+4,b'bristol ', 0.008
+4,b'edward ', 0.007
+4,b'slave ', 0.005
+4,b'people ', 0.003
+4,b'history ', 0.003
+4,b'colstonstatue ', 0.003
+4,b'trader ', 0.003
+4,b'city ', 0.002
+4,b'year ', 0.002
+4,b'via ', 0.001
+4,b'pulled ', 0.001
+4,b'protester ', 0.001
+4,b'council ', 0.001
+4,b'petition ', 0.001
+4,b'replace ', 0.001
+4,b'slavery ', 0.001
+4,b'would ', 0.001
+4,b'one', 0.001
+5,b'statue ',0.020
+5,b'colston ', 0.018
+5,b'bristol ', 0.008
+5,b'edward ', 0.007
+5,b'slave ', 0.005
+5,b'people ', 0.004
+5,b'history ', 0.003
+5,b'colstonstatue ', 0.003
+5,b'trader ', 0.003
+5,b'city ', 0.002
+5,b'year ', 0.002
+5,b'replace ', 0.001
+5,b'via ', 0.001
+5,b'protester ', 0.001
+5,b'pulled ', 0.001
+5,b'council ', 0.001
+5,b'petition ', 0.001
+5,b'sign ', 0.001
+5,b'one ', 0.001
+5,b'slavery', 0.001
+6,b'statue ',0.021
+6,b'colston ', 0.018
+6,b'bristol ', 0.008
+6,b'edward ', 0.007
+6,b'slave ', 0.005
+6,b'people ', 0.004
+6,b'history ', 0.003
+6,b'colstonstatue ', 0.003
+6,b'trader ', 0.003
+6,b'city ', 0.002
+6,b'year ', 0.002
+6,b'via ', 0.002
+6,b'petition ', 0.001
+6,b'pulled ', 0.001
+6,b'protester ', 0.001
+6,b'council ', 0.001
+6,b'replace ', 0.001
+6,b'would ', 0.001
+6,b'black ', 0.001
+6,b'slavery', 0.001
+7,b'statue ',0.020
+7,b'colston ', 0.018
+7,b'bristol ', 0.008
+7,b'edward ', 0.007
+7,b'slave ', 0.005
+7,b'people ', 0.003
+7,b'history ', 0.003
+7,b'colstonstatue ', 0.003
+7,b'trader ', 0.003
+7,b'city ', 0.002
+7,b'year ', 0.002
+7,b'pulled ', 0.002
+7,b'via ', 0.001
+7,b'council ', 0.001
+7,b'petition ', 0.001
+7,b'replace ', 0.001
+7,b'protester ', 0.001
+7,b'one ', 0.001
+7,b'would ', 0.001
+7,b'slavery', 0.001
+8,b'statue ',0.020
+8,b'colston ', 0.018
+8,b'bristol ', 0.008
+8,b'edward ', 0.007
+8,b'slave ', 0.005
+8,b'people ', 0.003
+8,b'history ', 0.003
+8,b'colstonstatue ', 0.003
+8,b'trader ', 0.003
+8,b'city ', 0.002
+8,b'year ', 0.002
+8,b'via ', 0.001
+8,b'council ', 0.001
+8,b'replace ', 0.001
+8,b'pulled ', 0.001
+8,b'protester ', 0.001
+8,b'petition ', 0.001
+8,b'one ', 0.001
+8,b'slavery ', 0.001
+8,b'would', 0.001
+9,b'statue ',0.021
+9,b'colston ', 0.018
+9,b'bristol ', 0.008
+9,b'edward ', 0.007
+9,b'slave ', 0.005
+9,b'people ', 0.004
+9,b'history ', 0.003
+9,b'colstonstatue ', 0.003
+9,b'trader ', 0.003
+9,b'city ', 0.002
+9,b'year ', 0.002
+9,b'via ', 0.001
+9,b'one ', 0.001
+9,b'pulled ', 0.001
+9,b'council ', 0.001
+9,b'protester ', 0.001
+9,b'replace ', 0.001
+9,b'petition ', 0.001
+9,b'slavery ', 0.001
+9,b'black', 0.001
