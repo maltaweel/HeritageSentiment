@@ -1,201 +1,201 @@
 Topic,Term,Value
-0,b'tatum ',0.026
-0,b'host ', 0.025
-0,b'give ', 0.022
-0,b'bbc ', 0.022
-0,b'foxnews ', 0.019
-0,b'history ', 0.018
-0,b'tore ', 0.018
-0,b'fame ', 0.017
-0,b'fight ', 0.017
-0,b'way ', 0.015
-0,b'take ', 0.015
-0,b'gop ', 0.014
-0,b'slow ', 0.014
-0,b'jorge_elorza ', 0.014
-0,b'voice ', 0.014
-0,b'car ', 0.014
-0,b'politico ', 0.013
-0,b'petition ', 0.013
-0,b'tomorrow ', 0.013
-0,b'genocide', 0.013
-1,b'ignore ',0.032
-1,b'wearing ', 0.027
-1,b'christopher ', 0.024
-1,b'skirmish ', 0.022
-1,b'whether ', 0.021
-1,b'globe ', 0.021
-1,b'blvd ', 0.020
-1,b'white ', 0.019
-1,b'part ', 0.019
-1,b'transported ', 0.017
-1,b'video ', 0.016
-1,b'elmwood ', 0.015
-1,b'elderly ', 0.015
-1,b'express ', 0.014
-1,b'nytimes ', 0.014
-1,b'put ', 0.014
-1,b'much ', 0.013
-1,b'columbus ', 0.013
-1,b'way ', 0.013
-1,b'crowd', 0.012
-2,b'ask ',0.022
-2,b'republican ', 0.022
-2,b'completely ', 0.021
-2,b'relocate ', 0.020
-2,b'city ', 0.019
-2,b'concern ', 0.019
-2,b'california ', 0.018
-2,b'crime ', 0.017
-2,b'bus ', 0.017
-2,b'm_b_dunphy ', 0.016
-2,b'genocide ', 0.016
-2,b'office ', 0.016
-2,b'cnn ', 0.016
-2,b'parsippany ', 0.015
-2,b'taking ', 0.015
-2,b'part ', 0.015
-2,b'notice ', 0.014
-2,b'prov ', 0.014
-2,b'give ', 0.014
-2,b'erupt', 0.013
-3,b'remain ',0.025
-3,b'elderly ', 0.020
-3,b'aarp ', 0.020
-3,b'slam ', 0.020
-3,b'plan ', 0.017
-3,b'worrying ', 0.016
-3,b'nytimes ', 0.016
-3,b'delauro ', 0.015
-3,b'perfect ', 0.015
-3,b'chris ', 0.014
-3,b'hijacked ', 0.014
-3,b'life ', 0.014
-3,b'ignore ', 0.014
-3,b'change ', 0.013
-3,b'office ', 0.013
-3,b'share ', 0.013
-3,b'republican ', 0.013
-3,b'public ', 0.012
-3,b'taking ', 0.012
-3,b'politico', 0.012
-4,b'storage ',0.024
-4,b'delauro ', 0.023
-4,b'parsippany ', 0.022
-4,b'cnbc ', 0.022
-4,b'nytimes ', 0.022
-4,b'lol ', 0.018
-4,b'scheduled ', 0.018
-4,b'suri ', 0.018
-4,b'try ', 0.017
-4,b'call ', 0.016
-4,b'plantation ', 0.016
-4,b'whether ', 0.015
-4,b'office ', 0.015
-4,b'granahan ', 0.015
-4,b'approach ', 0.014
-4,b'slow ', 0.014
-4,b'name ', 0.012
-4,b'punk ', 0.012
-4,b'back ', 0.012
-4,b'much', 0.011
-5,b'taken ',0.030
-5,b'downtown ', 0.026
-5,b'anti ', 0.023
-5,b'much ', 0.022
-5,b'wapo ', 0.020
-5,b'overblowa ', 0.019
-5,b'protest ', 0.019
-5,b'ignore ', 0.018
-5,b'worrying ', 0.016
-5,b'crowd ', 0.015
-5,b'rip ', 0.015
-5,b'help ', 0.014
-5,b'decides ', 0.014
-5,b'approach ', 0.013
-5,b'better ', 0.013
-5,b'process ', 0.013
-5,b'parsippany ', 0.013
-5,b'dailykos ', 0.013
-5,b'providence ', 0.013
-5,b'taking', 0.012
-6,b'statue ',0.021
-6,b'matter ', 0.021
-6,b'erupt ', 0.021
-6,b'news ', 0.020
-6,b'notice ', 0.020
-6,b'blvd ', 0.018
-6,b'patriot ', 0.017
-6,b'dailykos ', 0.017
-6,b'aarp ', 0.017
-6,b'genoa ', 0.015
-6,b'man ', 0.015
-6,b'whether ', 0.015
-6,b'better ', 0.015
-6,b'remain ', 0.014
-6,b'ignore ', 0.014
-6,b'california ', 0.014
-6,b'removed ', 0.013
-6,b'genocide ', 0.013
-6,b'connecticut ', 0.013
-6,b'downtown', 0.012
-7,b'capitol ',0.029
-7,b'erupt ', 0.023
-7,b'christopher ', 0.022
-7,b'host ', 0.022
-7,b'process ', 0.021
-7,b'remove ', 0.020
-7,b'columbus ', 0.019
-7,b'foxnews ', 0.018
-7,b'send ', 0.017
-7,b'tore ', 0.015
-7,b'gop ', 0.015
-7,b'rioter ', 0.015
-7,b'folk ', 0.015
-7,b'decides ', 0.015
-7,b'new ', 0.014
-7,b'scheduled ', 0.014
-7,b'out ', 0.014
-7,b'concern ', 0.013
-7,b'removed ', 0.012
-7,b'gone', 0.012
-8,b'downtown ',0.030
-8,b'fame ', 0.026
-8,b'globe ', 0.025
-8,b'video ', 0.021
-8,b'perfect ', 0.020
-8,b'happened ', 0.018
-8,b'shit ', 0.017
-8,b'office ', 0.016
-8,b'hispanic ', 0.016
-8,b'jorge_elorza ', 0.016
-8,b'chris ', 0.015
-8,b'nytimes ', 0.014
-8,b'name ', 0.014
-8,b'host ', 0.014
-8,b'delauro ', 0.013
-8,b'suri ', 0.013
-8,b'skirmish ', 0.012
-8,b'upriseri ', 0.012
-8,b'smart ', 0.012
-8,b'way', 0.011
-9,b'passive ',0.026
-9,b'near ', 0.022
-9,b'supported ', 0.022
-9,b'out ', 0.021
-9,b'tore ', 0.021
-9,b'smart ', 0.020
-9,b'hey ', 0.019
-9,b'pummels ', 0.018
-9,b'philadelphia ', 0.017
-9,b'anti ', 0.016
-9,b'put ', 0.015
-9,b'matter ', 0.014
-9,b'democrat ', 0.014
-9,b'elderly ', 0.013
-9,b'lol ', 0.013
-9,b'crime ', 0.013
-9,b'cheer ', 0.013
-9,b'nytimes ', 0.013
-9,b'could ', 0.012
-9,b'got', 0.012
+0,b'statue ',0.172
+0,b'edward ', 0.139
+0,b'history ', 0.120
+0,b'city ', 0.067
+0,b'stay ', 0.059
+0,b'colston ', 0.056
+0,b'iin ', 0.053
+0,b'argument ', 0.048
+0,b'otherwise ', 0.047
+0,b'ffs ', 0.038
+0,b'forget ', 0.038
+0,b'trader ', 0.033
+0,b'bristol ', 0.029
+0,b'might ', 0.028
+0,b'slave ', 0.026
+0,b'yesterday ', 0.019
+0,b'someone ', 0.014
+0,b'honestly ', 0.010
+0,b'centre ', 0.004
+0,b'said', 0.000
+1,b'statue ',0.207
+1,b'stay ', 0.142
+1,b'city ', 0.098
+1,b'someone ', 0.086
+1,b'said ', 0.078
+1,b'might ', 0.070
+1,b'colston ', 0.049
+1,b'trader ', 0.044
+1,b'forget ', 0.037
+1,b'argument ', 0.037
+1,b'honestly ', 0.034
+1,b'bristol ', 0.023
+1,b'edward ', 0.021
+1,b'centre ', 0.021
+1,b'history ', 0.020
+1,b'yesterday ', 0.019
+1,b'slave ', 0.006
+1,b'otherwise ', 0.005
+1,b'ffs ', 0.001
+1,b'iin', 0.000
+2,b'said ',0.188
+2,b'someone ', 0.096
+2,b'centre ', 0.096
+2,b'iin ', 0.086
+2,b'edward ', 0.086
+2,b'forget ', 0.073
+2,b'ffs ', 0.063
+2,b'honestly ', 0.058
+2,b'trader ', 0.051
+2,b'bristol ', 0.044
+2,b'statue ', 0.035
+2,b'city ', 0.031
+2,b'slave ', 0.029
+2,b'history ', 0.016
+2,b'stay ', 0.015
+2,b'otherwise ', 0.014
+2,b'argument ', 0.012
+2,b'yesterday ', 0.005
+2,b'colston ', 0.004
+2,b'might', 0.002
+3,b'yesterday ',0.151
+3,b'city ', 0.127
+3,b'statue ', 0.107
+3,b'centre ', 0.071
+3,b'otherwise ', 0.070
+3,b'ffs ', 0.066
+3,b'someone ', 0.061
+3,b'bristol ', 0.059
+3,b'slave ', 0.058
+3,b'honestly ', 0.041
+3,b'edward ', 0.032
+3,b'might ', 0.032
+3,b'colston ', 0.031
+3,b'argument ', 0.023
+3,b'said ', 0.022
+3,b'trader ', 0.021
+3,b'history ', 0.010
+3,b'forget ', 0.010
+3,b'iin ', 0.005
+3,b'stay', 0.003
+4,b'argument ',0.130
+4,b'bristol ', 0.120
+4,b'ffs ', 0.081
+4,b'trader ', 0.081
+4,b'said ', 0.079
+4,b'city ', 0.074
+4,b'otherwise ', 0.072
+4,b'might ', 0.053
+4,b'centre ', 0.052
+4,b'iin ', 0.047
+4,b'history ', 0.040
+4,b'forget ', 0.035
+4,b'colston ', 0.033
+4,b'slave ', 0.031
+4,b'honestly ', 0.026
+4,b'statue ', 0.017
+4,b'yesterday ', 0.014
+4,b'someone ', 0.010
+4,b'stay ', 0.003
+4,b'edward', 0.002
+5,b'colston ',0.144
+5,b'argument ', 0.120
+5,b'might ', 0.115
+5,b'said ', 0.113
+5,b'slave ', 0.103
+5,b'statue ', 0.074
+5,b'someone ', 0.056
+5,b'iin ', 0.047
+5,b'honestly ', 0.045
+5,b'centre ', 0.038
+5,b'history ', 0.031
+5,b'yesterday ', 0.030
+5,b'trader ', 0.019
+5,b'city ', 0.015
+5,b'otherwise ', 0.015
+5,b'edward ', 0.011
+5,b'ffs ', 0.009
+5,b'forget ', 0.007
+5,b'bristol ', 0.006
+5,b'stay', 0.002
+6,b'statue ',0.214
+6,b'slave ', 0.164
+6,b'said ', 0.098
+6,b'someone ', 0.094
+6,b'trader ', 0.089
+6,b'history ', 0.080
+6,b'might ', 0.053
+6,b'bristol ', 0.047
+6,b'centre ', 0.037
+6,b'edward ', 0.027
+6,b'forget ', 0.020
+6,b'city ', 0.012
+6,b'iin ', 0.012
+6,b'otherwise ', 0.011
+6,b'honestly ', 0.010
+6,b'yesterday ', 0.009
+6,b'colston ', 0.007
+6,b'ffs ', 0.006
+6,b'argument ', 0.006
+6,b'stay', 0.006
+7,b'colston ',0.145
+7,b'slave ', 0.094
+7,b'history ', 0.093
+7,b'argument ', 0.090
+7,b'said ', 0.069
+7,b'forget ', 0.061
+7,b'trader ', 0.060
+7,b'stay ', 0.058
+7,b'iin ', 0.056
+7,b'yesterday ', 0.047
+7,b'bristol ', 0.046
+7,b'edward ', 0.033
+7,b'someone ', 0.030
+7,b'centre ', 0.027
+7,b'statue ', 0.022
+7,b'city ', 0.022
+7,b'honestly ', 0.014
+7,b'might ', 0.011
+7,b'otherwise ', 0.011
+7,b'ffs', 0.010
+8,b'argument ',0.266
+8,b'honestly ', 0.138
+8,b'centre ', 0.095
+8,b'trader ', 0.079
+8,b'might ', 0.066
+8,b'otherwise ', 0.065
+8,b'ffs ', 0.060
+8,b'slave ', 0.040
+8,b'forget ', 0.035
+8,b'stay ', 0.028
+8,b'someone ', 0.019
+8,b'city ', 0.016
+8,b'colston ', 0.015
+8,b'yesterday ', 0.013
+8,b'bristol ', 0.013
+8,b'edward ', 0.012
+8,b'said ', 0.011
+8,b'statue ', 0.010
+8,b'history ', 0.009
+8,b'iin', 0.009
+9,b'ffs ',0.215
+9,b'otherwise ', 0.121
+9,b'city ', 0.110
+9,b'centre ', 0.082
+9,b'edward ', 0.071
+9,b'statue ', 0.066
+9,b'might ', 0.048
+9,b'argument ', 0.043
+9,b'slave ', 0.041
+9,b'said ', 0.037
+9,b'stay ', 0.032
+9,b'someone ', 0.029
+9,b'iin ', 0.028
+9,b'history ', 0.021
+9,b'colston ', 0.020
+9,b'yesterday ', 0.010
+9,b'honestly ', 0.008
+9,b'trader ', 0.008
+9,b'bristol ', 0.007
+9,b'forget', 0.003

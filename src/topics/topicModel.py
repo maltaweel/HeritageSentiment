@@ -147,9 +147,9 @@ class TopicModel():
         c_v = []
         lm_list = []
         for num_topics in range(1, limit*2):
-            lm = LdaModel(corpus=corpus, num_topics=num_topics, id2word=dictionary)
+            lm = LdaModel(corpus=corpus, num_topics=num_topics, id2word=dictionary,alpha="auto")
             lm_list.append(lm)
-            cm = CoherenceModel(model=lm, texts=texts, dictionary=dictionary, coherence='c_v')
+            cm = CoherenceModel(model=lm, texts=[texts], corpus=corpus, coherence='u_mass')
             c_v.append(cm.get_coherence())
             del cm
             
@@ -270,16 +270,15 @@ def run(argv):
     end=argv[3]
     
     #load and process text
-    texts=tm.loadData(start,end)
-    full_text=texts
-    texts=tm.first_process(texts)
-    corpus, dictionary=tm.process_text(full_text,texts)
+    original_texts=tm.loadData(start,end)
+    texts=tm.first_process(original_texts)
+    corpus, dictionary=tm.process_text(original_texts,texts)
     
     #run topic models
     tm.runModels(number_of_topics,corpus, dictionary,start,end)
     
     #output coherence model
-    lmlist, c_v=tm.evaluate_graph(dictionary, corpus, texts, int(number_of_topics))
+    lmlist, c_v=tm.evaluate_graph(dictionary, corpus, original_texts, int(number_of_topics))
     tm.printEvaluation(lmlist,c_v,number_of_topics,start,end)
     
     print('Finished')
