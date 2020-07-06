@@ -13,6 +13,15 @@ import csv
 
 '''
 Method to load data from input files in the output folder. Method merges files in the folder, keeping all the data columns and removing duplicate values.
+
+@return dates- the date of tweets
+@return ids- the user ids
+@return links- the links of tweets
+@return texts- the texts (or tweets)
+@return usernames- the username data
+@return retweets- the retweet data
+@return hashtags- the hashtag data
+@return locations- the location data
 '''
 def loadData():
     
@@ -91,8 +100,12 @@ Method to run the module
 '''           
 def run():
 
+    #load data and get different data
     dates,ids,links,texts,usernames,retweets,hashtags,locations=loadData()
+    
+    #print results
     printResults(dates,ids,links,texts,usernames,retweets,hashtags,locations)
+    
     print("Finished")
    
 if __name__ == '__main__':

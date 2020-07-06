@@ -1,4 +1,7 @@
 '''
+The main module used for topic modelling.
+Topic models include latent Dirichlet allocation (LDA) and Hierarchical Dirichlet Process (HDP).
+
 Created on Jul 1, 2020
 
 @author: mark
@@ -26,41 +29,68 @@ lemmatizer = WordNetLemmatizer()
 
 class TopicModel():
     
+    '''
+    Simple method to prepocess text using gensim
+    '''
     def first_process(self,texts):
 
         for t in texts:
             t=yield gensim.utils.simple_preprocess(t, deacc=True, min_len=3)
-            
+    
+    
+    '''
+    Method to process text and lemmatize.
+    
+    @param fullt_text- the full text to create bigram
+    @param texts- texts to analyze for topic models and process using lemmatization.
+    
+    @param corpus- the corpus of text to analyze
+    @param dictionary- the term dictionary to match against
+    '''       
     def process_text(self, full_text, texts):
-            
+        
+        #develop bigram
         bigram = gensim.models.Phrases(full_text, min_count=5, threshold=100) # higher threshold fewer phrases.
         bigram = gensim.models.phrases.Phraser(bigram)
  #      trigram = gensim.tsmodels.phrases.Phraser(full_text, threshold=100)
-         
+        
+        #get texts from bigram
         texts = [bigram[line] for line in texts]
   #     texts = [[word.split('/')[0] for word in lemmatize(' '.join(line), allowed_tags=re.compile('(NN)'), min_length=3)] for line in texts]
   #      texts_lemma = ' '.join([lemmatizer.lemmatize(w) for w in texts])
         
+        #get lemmaztized words
         texts_lemma=[]
         for line in texts:
             for word in line:
                 l=lemmatizer.lemmatize(word)
                 texts_lemma.append(l)
         
+        #create dictionary
         texts_lemma = [d.split() for d in texts_lemma]
         dictionary = Dictionary(texts_lemma)
         
+        #create the corpus
         corpus = [dictionary.doc2bow(text) for text in texts_lemma]
         
         return corpus, dictionary
         
-        
+    '''
+    Method to load text data based on a start and end data.
+    
+    @param start- the start date to load text
+    @param end- the end date to load text
+    '''  
     def loadData(self,start,end):
+        
+        #the pathway to the data to analyze
         pn=os.path.abspath(__file__)
         pn=pn.split("src")[0]  
         directory=os.path.join(pn,'modified')
         
         rows=[]
+        
+        #get the text file from the directory
         try:
             for f in listdir(directory):
                 
@@ -68,13 +98,22 @@ class TopicModel():
                 if '.csv' not in f:
                     continue
                 
+                #open the text
                 with open(os.path.join(directory,f),'rt') as csvfile:
+                    
+                    #get the reader
                     reader = csv.DictReader(csvfile)
             
+                    #get single reader
                     for row in reader:
+                        
+                        #get text
                         text=row['Text'] #.decode('utf-8')
+                        
+                        #get date
                         date=row['Datetime'].split(" ")[0]
                         
+                        #get dates (start and end)
                         date_time_obj = datetime.datetime.strptime(date, '%Y-%m-%d')
                         start_d=datetime.datetime.strptime(start, '%Y-%m-%d')
                         end_d=datetime.datetime.strptime(end, '%Y-%m-%d')
@@ -87,7 +126,7 @@ class TopicModel():
                             if date<endD:
                                 rows.append(text)       
                         
-                        
+        # the exception handling           
         except IOError:
             print ("Could not read file:", csvfile)               
         
@@ -96,16 +135,12 @@ class TopicModel():
     """
     Method for using a coherence model to look at topic coherence for LDA models.
     
-    Parameters:
-    ----------
-    dictionary-- Gensim dictionary
-    corpus-- Gensim corpus
-    limit-- topic limit
+    @param dictionary- Gensim dictionary
+    @param corpus- Gensim corpus
+    @param limit- topic limit
     
-    Returns:
-    -------
-    lm_list : List of LDA topic models
-    c_v : Coherence values corresponding to the LDA model with respective number of topics
+    @return lm_list- List of LDA topic models
+    @return c_v- Coherence values corresponding to the LDA model with respective number of topics
     """
     def evaluate_graph(self, dictionary, corpus, texts, limit):
     
@@ -122,9 +157,12 @@ class TopicModel():
 
     '''
     Method to print csv output results of the evaluations conducted 
-    modList-- the model evaluated
-    results-- the result scores
-    i-- the index output desired
+    
+    @param modList- the model evaluated
+    @param results- the result scores
+    @param i- the index output desired
+    @param start- the start date
+    @param end- the end date
     '''
     def printEvaluation(self,modList,results,i,start,end):
        
@@ -136,14 +174,18 @@ class TopicModel():
                 writer = csv.DictWriter(csvf, fieldnames=fieldnames)
 
                 writer.writeheader()
-                for i in range(0,len(modList)):
+                for t in range(0,len(modList)):
         
-                    writer.writerow({'Model':str(modList[i]),'Score': str(results[i])})
+                    writer.writerow({'Model':str(modList[t]),'Score': str(results[t])})
                 
     '''
-    Output results of the analysis
-    i-- the topic number
-    model-- the model used (e.g., lda, hdp)
+    Method to output results of the analysis.
+    
+    @param i- the topic number
+    @param results- the results from the model
+    @param model- the model used (e.g., lda, hdp) to output
+    @param start- the start date
+    @param end- the end date
     '''
     def printResults(self,i,results,model,start,end):
 
@@ -169,10 +211,17 @@ class TopicModel():
                     val=vvt[0]
                     writer.writerow({'Topic':str(n),'Term': str(t.encode("utf-8")),'Value':str(val)})
     
-    
+    '''
+    Method to run the topic models (lda and hdp).
+    @param number_of_topics- the number of topics
+    @param corpus- the corpus of text
+    @param dictionary- the dictionary of terms
+    @param start- the start date
+    @param end- the end date
+    '''
     def runModels(self,number_of_topics, corpus, dictionary,start,end):
         
-        #hdp model
+        #do hdp model
         hdpmodel = HdpModel(corpus=corpus, id2word=dictionary)
         
         hdpmodel.print_topics(num_topics=int(number_of_topics), num_words=10)
@@ -186,7 +235,7 @@ class TopicModel():
         #output results
         self.printResults(number_of_topics,hdptopics,'hdp',start,end)
         
-        #lda model
+        #d lda model
         ldamodel = LdaModel(corpus=corpus, num_topics=number_of_topics, id2word=dictionary,passes=20,iterations=400)
        
         ldamodel.save('lda'+number_of_topics+'.model')
@@ -201,14 +250,16 @@ class TopicModel():
    
         location=os.path.join(pn,'topic_model_results')
      
-        #visualize outputs
+        #visualize outputs in html
         pyLDAvis.save_html(visualisation2, os.path.join(location,'LDA_Visualization'+str(number_of_topics)+"_"+start+
                                                         "_"+end+'.html')) 
         
         
         
 '''
-Method to run the module
+Method to run the module.
+
+@param argv- the runtime argument
 '''           
 def run(argv):
     
@@ -232,6 +283,7 @@ def run(argv):
     tm.printEvaluation(lmlist,c_v,number_of_topics,start,end)
     
     print('Finished')
-   
+
+#run the module
 if __name__ == '__main__':
     run(sys.argv)

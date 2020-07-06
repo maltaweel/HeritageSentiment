@@ -29,6 +29,7 @@ class Sentiment:
     This determines the affinity (sentiment) score from a tweet.
     
     @param tweet- the tweet to score
+    @return score- the sentiment score
     '''
     def get_affinity_score(self, tweet):
         

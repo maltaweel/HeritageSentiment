@@ -1,4 +1,6 @@
 '''
+Module used to clean Twitter data.
+
 Created on Jun 18, 2020
 
 @author: mark
@@ -16,9 +18,12 @@ import fileinput
 
 
 
-
+#English stop words
 stop_words = set(stopwords.words('english')) 
 
+'''
+Main method to remove stop words, short (2-letter words or less), and clean text.
+'''
 def cleanData():
     pn=os.path.abspath(__file__)
     pn=pn.split("src")[0]  
@@ -45,12 +50,14 @@ def cleanData():
                     
                     word_tokens = word_tokenize(text) 
                     
-                    
+                    #block of filters to clean sentences
+                    #removes stop words, @ symbol, http, and various punctuation listed
                     filtered_sentence = [w for w in word_tokens if not w in stop_words]
                     filtered_sentence = [w for w in filtered_sentence if not w.startswith("@")]
                     filtered_sentence = [w for w in filtered_sentence if not w.startswith("http")]
                     filtered_sentence = [w for w in filtered_sentence if " amp " not in w]
                     
+                    #removal of commas, punctuations, brackets, 
                     words = [w.replace('(', '') for w in filtered_sentence]
                     words = [w.replace(')', '') for w in words]
                     words = [w.replace('?', '') for w in words]
@@ -59,26 +66,34 @@ def cleanData():
                     words = [w.replace('"', '') for w in words]
                     words = [w.replace('!', '') for w in words]
                     words = [w.replace(':', '') for w in words]
-                    words = [w.replace('&amp', '') for w in words]
+                    words = [w.replace('&', '') for w in words]
                     words = [w.replace('.', '') for w in words]
                     words = [w.replace('/', '') for w in words]
                     words = [w.replace('[', '') for w in words]
                     words = [w.replace(']', '') for w in words] 
                     words = [w for w in words if len(w) > 2]
-                        
+                    
+                    #re-add cleaned words to tweet text    
                     w = " ".join(words)
 
+                    #add text to the dictionary and then the row
                     row['Text']=w
                     rows.append(row)
                 
+                #call the output of the clean data
                 fle=os.path.join(output_directory,'modified'+"_"+f)   
                 output(rows,fle)  
                   
             files[f]=rows      
     
+    #exception handling
     except IOError:
         print ("Could not read file:", csvfile)
 
+'''
+Method to output the cleaned data.
+@param fileOutput- the file output directory
+'''
 def output(data,fileOutput):
     fieldnames = ['Datetime','ID','Link','Text','Username','Retweets','Hashtags','Geolocation']
     with open(fileOutput, 'wt') as csvf:
@@ -92,10 +107,15 @@ def output(data,fileOutput):
                              'Text':str(f['Text']),'Username':str(f['Username']),'Retweets':str(f['Retweets']),'Hashtags':str(f['Hashtags']),
                               'Geolocation':str(f['Geolocation'])})
     
-        
+'''
+The main run method to run the cleanup module.
+'''        
 def run():
+    #clean data
     cleanData()
+    
     print('Finished')
 
+#calls the run method
 if __name__ == '__main__':
     run()
