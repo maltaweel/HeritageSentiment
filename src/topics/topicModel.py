@@ -44,8 +44,8 @@ class TopicModel():
     @param fullt_text- the full text to create bigram
     @param texts- texts to analyze for topic models and process using lemmatization.
     
-    @param corpus- the corpus of text to analyze
-    @param dictionary- the term dictionary to match against
+    @return corpus- the corpus of text to analyze
+    @return dictionary- the term dictionary to match against
     '''       
     def process_text(self, full_text, texts):
         
