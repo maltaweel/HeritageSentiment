@@ -146,7 +146,7 @@ class TopicModel():
     
         c_v = []
         lm_list = []
-        for num_topics in range(1, limit*2):
+        for num_topics in range(1, (limit*2)+1):
             lm = LdaModel(corpus=corpus, num_topics=num_topics, id2word=dictionary,alpha="auto")
             lm_list.append(lm)
             cm = CoherenceModel(model=lm, texts=[texts], corpus=corpus, coherence='u_mass')
@@ -246,12 +246,12 @@ class TopicModel():
         self.printResults(number_of_topics,ldatopics,'lda',start,end)
     
     
-        visualisation2 = pyLDAvis.gensim.prepare(ldamodel, corpus, dictionary)
+        visualisation = pyLDAvis.gensim.prepare(ldamodel, corpus, dictionary)
    
         location=os.path.join(pn,'topic_model_results')
      
         #visualize outputs in html
-        pyLDAvis.save_html(visualisation2, os.path.join(location,'LDA_Visualization'+str(number_of_topics)+"_"+start+
+        pyLDAvis.save_html(visualisation, os.path.join(location,'LDA_Visualization'+str(number_of_topics)+"_"+start+
                                                         "_"+end+'.html')) 
         
         

@@ -66,7 +66,7 @@ def cleanData():
                     words = [w.replace('"', '') for w in words]
                     words = [w.replace('!', '') for w in words]
                     words = [w.replace(':', '') for w in words]
-                    words = [w.replace('&', '') for w in words]
+                    words = [w.replace('&amp;', '') for w in words]
                     words = [w.replace('.', '') for w in words]
                     words = [w.replace('/', '') for w in words]
                     words = [w.replace('[', '') for w in words]

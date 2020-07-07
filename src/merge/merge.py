@@ -57,7 +57,7 @@ def loadData():
                 location=row['Geolocation']
                 
 
-                if text in texts and date in dates:
+                if text in texts:
                     continue
                 
                 else:

@@ -1,201 +1,201 @@
 Topic,Term,Value
-0,b'statue ',0.172
-0,b'edward ', 0.139
-0,b'history ', 0.120
-0,b'city ', 0.067
-0,b'stay ', 0.059
-0,b'colston ', 0.056
-0,b'iin ', 0.053
-0,b'argument ', 0.048
-0,b'otherwise ', 0.047
-0,b'ffs ', 0.038
-0,b'forget ', 0.038
-0,b'trader ', 0.033
-0,b'bristol ', 0.029
-0,b'might ', 0.028
-0,b'slave ', 0.026
-0,b'yesterday ', 0.019
-0,b'someone ', 0.014
-0,b'honestly ', 0.010
-0,b'centre ', 0.004
-0,b'said', 0.000
-1,b'statue ',0.207
-1,b'stay ', 0.142
-1,b'city ', 0.098
-1,b'someone ', 0.086
-1,b'said ', 0.078
-1,b'might ', 0.070
-1,b'colston ', 0.049
-1,b'trader ', 0.044
-1,b'forget ', 0.037
-1,b'argument ', 0.037
-1,b'honestly ', 0.034
-1,b'bristol ', 0.023
-1,b'edward ', 0.021
-1,b'centre ', 0.021
-1,b'history ', 0.020
-1,b'yesterday ', 0.019
-1,b'slave ', 0.006
-1,b'otherwise ', 0.005
-1,b'ffs ', 0.001
-1,b'iin', 0.000
-2,b'said ',0.188
-2,b'someone ', 0.096
-2,b'centre ', 0.096
-2,b'iin ', 0.086
-2,b'edward ', 0.086
-2,b'forget ', 0.073
-2,b'ffs ', 0.063
-2,b'honestly ', 0.058
-2,b'trader ', 0.051
-2,b'bristol ', 0.044
-2,b'statue ', 0.035
-2,b'city ', 0.031
-2,b'slave ', 0.029
-2,b'history ', 0.016
-2,b'stay ', 0.015
-2,b'otherwise ', 0.014
-2,b'argument ', 0.012
-2,b'yesterday ', 0.005
-2,b'colston ', 0.004
-2,b'might', 0.002
-3,b'yesterday ',0.151
-3,b'city ', 0.127
-3,b'statue ', 0.107
-3,b'centre ', 0.071
-3,b'otherwise ', 0.070
-3,b'ffs ', 0.066
-3,b'someone ', 0.061
-3,b'bristol ', 0.059
-3,b'slave ', 0.058
-3,b'honestly ', 0.041
-3,b'edward ', 0.032
-3,b'might ', 0.032
-3,b'colston ', 0.031
-3,b'argument ', 0.023
-3,b'said ', 0.022
-3,b'trader ', 0.021
-3,b'history ', 0.010
-3,b'forget ', 0.010
-3,b'iin ', 0.005
-3,b'stay', 0.003
-4,b'argument ',0.130
-4,b'bristol ', 0.120
-4,b'ffs ', 0.081
-4,b'trader ', 0.081
-4,b'said ', 0.079
-4,b'city ', 0.074
-4,b'otherwise ', 0.072
-4,b'might ', 0.053
-4,b'centre ', 0.052
-4,b'iin ', 0.047
-4,b'history ', 0.040
-4,b'forget ', 0.035
-4,b'colston ', 0.033
-4,b'slave ', 0.031
-4,b'honestly ', 0.026
-4,b'statue ', 0.017
-4,b'yesterday ', 0.014
-4,b'someone ', 0.010
-4,b'stay ', 0.003
-4,b'edward', 0.002
-5,b'colston ',0.144
-5,b'argument ', 0.120
-5,b'might ', 0.115
-5,b'said ', 0.113
-5,b'slave ', 0.103
-5,b'statue ', 0.074
-5,b'someone ', 0.056
-5,b'iin ', 0.047
-5,b'honestly ', 0.045
-5,b'centre ', 0.038
-5,b'history ', 0.031
-5,b'yesterday ', 0.030
-5,b'trader ', 0.019
-5,b'city ', 0.015
-5,b'otherwise ', 0.015
-5,b'edward ', 0.011
-5,b'ffs ', 0.009
-5,b'forget ', 0.007
-5,b'bristol ', 0.006
-5,b'stay', 0.002
-6,b'statue ',0.214
-6,b'slave ', 0.164
-6,b'said ', 0.098
-6,b'someone ', 0.094
-6,b'trader ', 0.089
-6,b'history ', 0.080
-6,b'might ', 0.053
-6,b'bristol ', 0.047
-6,b'centre ', 0.037
-6,b'edward ', 0.027
-6,b'forget ', 0.020
-6,b'city ', 0.012
-6,b'iin ', 0.012
-6,b'otherwise ', 0.011
-6,b'honestly ', 0.010
-6,b'yesterday ', 0.009
-6,b'colston ', 0.007
-6,b'ffs ', 0.006
-6,b'argument ', 0.006
-6,b'stay', 0.006
-7,b'colston ',0.145
-7,b'slave ', 0.094
-7,b'history ', 0.093
-7,b'argument ', 0.090
-7,b'said ', 0.069
-7,b'forget ', 0.061
-7,b'trader ', 0.060
-7,b'stay ', 0.058
-7,b'iin ', 0.056
-7,b'yesterday ', 0.047
-7,b'bristol ', 0.046
-7,b'edward ', 0.033
-7,b'someone ', 0.030
-7,b'centre ', 0.027
-7,b'statue ', 0.022
-7,b'city ', 0.022
-7,b'honestly ', 0.014
-7,b'might ', 0.011
-7,b'otherwise ', 0.011
-7,b'ffs', 0.010
-8,b'argument ',0.266
-8,b'honestly ', 0.138
-8,b'centre ', 0.095
-8,b'trader ', 0.079
-8,b'might ', 0.066
-8,b'otherwise ', 0.065
-8,b'ffs ', 0.060
-8,b'slave ', 0.040
-8,b'forget ', 0.035
-8,b'stay ', 0.028
-8,b'someone ', 0.019
-8,b'city ', 0.016
-8,b'colston ', 0.015
-8,b'yesterday ', 0.013
-8,b'bristol ', 0.013
-8,b'edward ', 0.012
-8,b'said ', 0.011
-8,b'statue ', 0.010
-8,b'history ', 0.009
-8,b'iin', 0.009
-9,b'ffs ',0.215
-9,b'otherwise ', 0.121
-9,b'city ', 0.110
-9,b'centre ', 0.082
-9,b'edward ', 0.071
-9,b'statue ', 0.066
-9,b'might ', 0.048
-9,b'argument ', 0.043
-9,b'slave ', 0.041
-9,b'said ', 0.037
-9,b'stay ', 0.032
-9,b'someone ', 0.029
-9,b'iin ', 0.028
-9,b'history ', 0.021
-9,b'colston ', 0.020
-9,b'yesterday ', 0.010
-9,b'honestly ', 0.008
-9,b'trader ', 0.008
-9,b'bristol ', 0.007
-9,b'forget', 0.003
+0,b'imperial ',0.008
+0,b'que ', 0.007
+0,b'daily ', 0.007
+0,b'peacefully ', 0.006
+0,b'gear ', 0.006
+0,b'calling ', 0.006
+0,b'click ', 0.006
+0,b'ricordato ', 0.005
+0,b'assurdo ', 0.005
+0,b'misconstrued ', 0.005
+0,b'suggested ', 0.005
+0,b'forgotten ', 0.005
+0,b'bbcnews ', 0.005
+0,b'another ', 0.005
+0,b'tearing ', 0.005
+0,b'near ', 0.005
+0,b'expert ', 0.005
+0,b'guess ', 0.005
+0,b'save ', 0.005
+0,b'let', 0.005
+1,b'enthusiast ',0.008
+1,b'ten ', 0.007
+1,b'gaze ', 0.007
+1,b'anti ', 0.007
+1,b'finally ', 0.006
+1,b'widow ', 0.005
+1,b'gear ', 0.005
+1,b'upon ', 0.005
+1,b'kid ', 0.005
+1,b'vieilles ', 0.005
+1,b'seem ', 0.005
+1,b'manifesto ', 0.005
+1,b'pissed ', 0.005
+1,b'gesture ', 0.005
+1,b'house ', 0.005
+1,b'rather ', 0.005
+1,b'inspire ', 0.005
+1,b'wont ', 0.005
+1,b'blitz ', 0.004
+1,b'prison', 0.004
+2,b'full ',0.007
+2,b'ever ', 0.007
+2,b'londonien ', 0.007
+2,b'shirt ', 0.006
+2,b'undertake ', 0.006
+2,b'racism ', 0.006
+2,b'officer ', 0.006
+2,b'wrapping ', 0.006
+2,b'thunderstorm ', 0.005
+2,b'josef ', 0.005
+2,b'youonly ', 0.005
+2,b'commemorating ', 0.005
+2,b'bored ', 0.005
+2,b'every ', 0.004
+2,b'movement ', 0.004
+2,b'definitely ', 0.004
+2,b'glorious ', 0.004
+2,b'gaulle ', 0.004
+2,b'whipping ', 0.004
+2,b'bat', 0.004
+3,b'absolutely ',0.008
+3,b'woulda ', 0.007
+3,b'front ', 0.006
+3,b'breitbartnews ', 0.006
+3,b'pal ', 0.006
+3,b'petition ', 0.005
+3,b'poc ', 0.005
+3,b'calling ', 0.005
+3,b'terrorism ', 0.005
+3,b'italian ', 0.005
+3,b'beautiful ', 0.005
+3,b'baseball ', 0.005
+3,b'parliament ', 0.005
+3,b'find ', 0.005
+3,b'poll ', 0.005
+3,b'urinate ', 0.005
+3,b'itabout ', 0.004
+3,b'symbol ', 0.004
+3,b'face ', 0.004
+3,b'trying', 0.004
+4,b'crazy ',0.009
+4,b'youonly ', 0.008
+4,b'disagreed ', 0.007
+4,b'member ', 0.007
+4,b'come ', 0.007
+4,b'ignorant ', 0.006
+4,b'better ', 0.006
+4,b'library ', 0.006
+4,b'protest ', 0.006
+4,b'desecrate ', 0.005
+4,b'hand ', 0.005
+4,b'gon ', 0.005
+4,b'full ', 0.005
+4,b'fare ', 0.005
+4,b'written ', 0.005
+4,b'guerre ', 0.005
+4,b'substance ', 0.005
+4,b'asking ', 0.005
+4,b'people ', 0.005
+4,b'exactly', 0.005
+5,b'people ',0.009
+5,b'johnson ', 0.008
+5,b'commemorating ', 0.008
+5,b'truth ', 0.008
+5,b'thug ', 0.008
+5,b'memorial ', 0.007
+5,b'est ', 0.006
+5,b'led ', 0.006
+5,b'division ', 0.006
+5,b'plundering ', 0.006
+5,b'headline ', 0.006
+5,b'propaganda ', 0.005
+5,b'spineless ', 0.005
+5,b'think ', 0.005
+5,b'opinion ', 0.005
+5,b'villan ', 0.005
+5,b'last ', 0.005
+5,b'time ', 0.005
+5,b'protected ', 0.005
+5,b'lol', 0.005
+6,b'nazi ',0.008
+6,b'tone ', 0.008
+6,b'cenotaph ', 0.007
+6,b'far ', 0.007
+6,b'everyone ', 0.006
+6,b'march ', 0.006
+6,b'defend ', 0.006
+6,b'hitler ', 0.005
+6,b'mais ', 0.005
+6,b'equality ', 0.005
+6,b'people ', 0.005
+6,b'almost ', 0.005
+6,b'compass ', 0.005
+6,b'nation ', 0.005
+6,b'scene ', 0.005
+6,b'violent ', 0.005
+6,b'stop ', 0.005
+6,b'gone ', 0.005
+6,b'brit ', 0.005
+6,b'soviet', 0.005
+7,b'policeman ',0.012
+7,b'understand ', 0.009
+7,b'removal ', 0.008
+7,b'feel ', 0.006
+7,b'defacing ', 0.006
+7,b'oppressione ', 0.006
+7,b'demonstrator ', 0.006
+7,b'recognise ', 0.006
+7,b'showed ', 0.006
+7,b'werenthere ', 0.005
+7,b'paulgoldingsmum ', 0.005
+7,b'copper ', 0.005
+7,b'context ', 0.005
+7,b'surreal ', 0.005
+7,b'proteger ', 0.005
+7,b'publicly ', 0.005
+7,b'uncover ', 0.005
+7,b'bat ', 0.004
+7,b'press ', 0.004
+7,b'boarded', 0.004
+8,b'leader ',0.007
+8,b'world ', 0.006
+8,b'highly ', 0.006
+8,b'coffin ', 0.005
+8,b'hurt ', 0.005
+8,b'easily ', 0.005
+8,b'listen ', 0.005
+8,b'example ', 0.005
+8,b'gene ', 0.005
+8,b'thanks ', 0.005
+8,b'see ', 0.005
+8,b'usa ', 0.005
+8,b'brutally ', 0.004
+8,b'mob ', 0.004
+8,b'celebra ', 0.004
+8,b'nigel_farage ', 0.004
+8,b'donbreak ', 0.004
+8,b'colonial ', 0.004
+8,b'family ', 0.004
+8,b'scene', 0.004
+9,b'resilience ',0.008
+9,b'recognised ', 0.007
+9,b'heiling ', 0.007
+9,b'wanted ', 0.006
+9,b'well ', 0.006
+9,b'londonprotests ', 0.006
+9,b'lad ', 0.006
+9,b'demonstrator ', 0.006
+9,b'football ', 0.006
+9,b'putting ', 0.005
+9,b'frenzy ', 0.005
+9,b'defaced ', 0.005
+9,b'churchill ', 0.005
+9,b'reason ', 0.005
+9,b'ruthless ', 0.005
+9,b'put ', 0.005
+9,b'others ', 0.005
+9,b'removed ', 0.005
+9,b'relate ', 0.005
+9,b'happen', 0.005
