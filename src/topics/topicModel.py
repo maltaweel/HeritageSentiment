@@ -13,14 +13,11 @@ from os import listdir
 
 import datetime
 
-from nltk.tokenize import RegexpTokenizer as word_tokenize
 from nltk.stem import WordNetLemmatizer
 from gensim.models import CoherenceModel, LdaModel, HdpModel
 
-import re
 import pyLDAvis.gensim
 import gensim
-from gensim.utils import lemmatize
 from gensim.corpora import Dictionary
 
 #use this as the starting pathway (the src folder)
