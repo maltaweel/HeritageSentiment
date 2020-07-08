@@ -147,6 +147,8 @@ class TopicModel():
     
         c_v = []
         lm_list = []
+        
+        #topic models made using LDA with the models analyzed using UMASS method coherence test
         for num_topics in range(1, (limit*2)+1):
             lm = LdaModel(corpus=corpus, num_topics=num_topics, id2word=dictionary,alpha="auto")
             lm_list.append(lm)
