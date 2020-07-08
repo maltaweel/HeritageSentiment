@@ -159,7 +159,7 @@ class TopicModel():
         return lm_list, c_v
 
     '''
-    Method to print csv output results of the evaluations conducted 
+    Method to print csv output results of the model coherence evaluations conducted 
     
     @param modList- the model evaluated
     @param results- the result scores
@@ -168,9 +168,11 @@ class TopicModel():
     @param end- the end date
     '''
     def printEvaluation(self,modList,results,i,start,end):
-       
+        
+        #the file output pathway
         filename=os.path.join(pn,'topic_model_results','evaluationTotal'+str(i)+"_"+start+"_"+end+".csv")   
         
+        #outputs are the model (name) and score
         fieldnames = ['Model','Score']
     
         with open(filename, 'w') as csvf:
@@ -182,9 +184,9 @@ class TopicModel():
                     writer.writerow({'Model':str(modList[t]),'Score': str(results[t])})
                 
     '''
-    Method to output results of the analysis.
+    Method to output LDA and HDP results of the analysis for a specific number of topics.
     
-    @param i- the topic number
+    @param i- the number of topics
     @param results- the results from the model
     @param model- the model used (e.g., lda, hdp) to output
     @param start- the start date
