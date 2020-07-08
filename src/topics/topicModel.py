@@ -159,7 +159,7 @@ class TopicModel():
         return lm_list, c_v
 
     '''
-    Method to print csv output results of the model coherence evaluations conducted 
+    Method to print csv output results of the model coherence evaluations conducted. 
     
     @param modList- the model evaluated
     @param results- the result scores
@@ -174,13 +174,14 @@ class TopicModel():
         
         #outputs are the model (name) and score
         fieldnames = ['Model','Score']
-    
+        
+        #write to file
         with open(filename, 'w') as csvf:
                 writer = csv.DictWriter(csvf, fieldnames=fieldnames)
 
                 writer.writeheader()
                 for t in range(0,len(modList)):
-        
+                    #write output
                     writer.writerow({'Model':str(modList[t]),'Score': str(results[t])})
                 
     '''
@@ -193,10 +194,11 @@ class TopicModel():
     @param end- the end date
     '''
     def printResults(self,i,results,model,start,end):
-
+        #output file and directory
         filename=os.path.join(pn,'topic_model_results','analysis_results_'+model+str(i)+"_"+start+"_"+
                               end+".csv")
         
+        # the fieldnames or column headings
         fieldnames = ['Topic','Term','Value']
 
         with open(filename, 'w') as csvf:
@@ -204,6 +206,7 @@ class TopicModel():
 
             writer.writeheader()
             
+            #write from results
             for l in results:
                 n=l[0]
                 v=l[1]
@@ -214,6 +217,8 @@ class TopicModel():
                         continue
                     t=vvt[1]
                     val=vvt[0]
+                    
+                    #write output
                     writer.writerow({'Topic':str(n),'Term': str(t.encode("utf-8")),'Value':str(val)})
     
     '''
