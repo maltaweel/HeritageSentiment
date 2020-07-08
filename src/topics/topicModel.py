@@ -23,8 +23,11 @@ import gensim
 from gensim.utils import lemmatize
 from gensim.corpora import Dictionary
 
+#use this as the starting pathway (the src folder)
 pn=os.path.abspath(__file__)
 pn=pn.split("src")[0]
+
+#the world lemmatizer to lemmatize words
 lemmatizer = WordNetLemmatizer()
 
 class TopicModel():
@@ -84,8 +87,6 @@ class TopicModel():
     def loadData(self,start,end):
         
         #the pathway to the data to analyze
-        pn=os.path.abspath(__file__)
-        pn=pn.split("src")[0]  
         directory=os.path.join(pn,'modified')
         
         rows=[]
