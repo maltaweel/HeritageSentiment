@@ -79,6 +79,7 @@ def run(argv):
     text_query = argv[1]
     count = int(argv[2])
 
+    #since and until dates to bound the search time
     since_date = argv[3]
     until_date = argv[4]
 

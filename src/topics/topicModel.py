@@ -285,8 +285,8 @@ def run(argv):
     tm.runModels(number_of_topics,corpus, dictionary,start,end)
     
     #output coherence model
-    lmlist, c_v=tm.evaluate_graph(dictionary, corpus, original_texts, int(number_of_topics))
-    tm.printEvaluation(lmlist,c_v,number_of_topics,start,end)
+    #lmlist, c_v=tm.evaluate_graph(dictionary, corpus, original_texts, int(number_of_topics))
+    #tm.printEvaluation(lmlist,c_v,number_of_topics,start,end)
     
     print('Finished')
 
