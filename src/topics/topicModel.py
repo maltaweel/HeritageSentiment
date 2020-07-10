@@ -229,11 +229,12 @@ class TopicModel():
     def runModels(self,number_of_topics, corpus, dictionary,start,end):
         
         #do hdp model
+        
         hdpmodel = HdpModel(corpus=corpus, id2word=dictionary)
         
         hdpmodel.print_topics(num_topics=int(number_of_topics), num_words=10)
         hdptopics = hdpmodel.show_topics(num_topics=int(number_of_topics))
-
+    
     #   result_dict=addTotalTermResults(hdptopics)
             
         #add results to total kept in a list     
@@ -243,7 +244,11 @@ class TopicModel():
         self.printResults(number_of_topics,hdptopics,'hdp',start,end)
         
         #d lda model
-        ldamodel = LdaModel(corpus=corpus, num_topics=number_of_topics, id2word=dictionary,passes=20,iterations=400)
+        ldamodel = LdaModel(corpus=corpus, num_topics=number_of_topics, id2word=dictionary, random_state=100,update_every=1,
+                                           chunksize=100,
+                                           passes=10,
+                                           alpha='auto',
+                                           per_word_topics=True)
        
         ldamodel.save('lda'+number_of_topics+'.model')
         ldatopics = ldamodel.show_topics(num_topics=int(number_of_topics))
