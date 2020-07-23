@@ -140,17 +140,20 @@ class TopicModel():
     @return lm_list- List of LDA topic models
     @return c_v- Coherence values corresponding to the LDA model with respective number of topics
     """
-    def evaluate_graph(self, dictionary, corpus, texts, limit):
+    def evaluate_graph(self, dictionary, corpus, limit):
     
         c_v = []
         lm_list = []
         
         #topic models made using LDA with the models analyzed using UMASS method coherence test
         for num_topics in range(1, (limit*2)+1):
-            lm = LdaModel(corpus=corpus, num_topics=num_topics, id2word=dictionary,alpha="auto")
+            lm = LdaModel(corpus,id2word=dictionary, num_topics=num_topics,  random_state=100,update_every=1,
+                    chunksize=100,passes=10,alpha='auto',per_word_topics=True)
             lm_list.append(lm)
-            cm = CoherenceModel(model=lm, texts=[texts], corpus=corpus, coherence='u_mass')
+            cm = CoherenceModel(model=lm,corpus=corpus,dictionary=dictionary, coherence='u_mass')
             c_v.append(cm.get_coherence())
+            
+            print(num_topics)
             del cm
             
         return lm_list, c_v
@@ -275,7 +278,7 @@ Method to run the module.
 '''           
 def run(argv):
     
-    #get run arguments
+    #create topic model and get run arguments
     tm=TopicModel()
     number_of_topics = argv[1]
     start=argv[2]
@@ -289,9 +292,11 @@ def run(argv):
     #run topic models
     tm.runModels(number_of_topics,corpus, dictionary,start,end)
     
+    
     #output coherence model
-    #lmlist, c_v=tm.evaluate_graph(dictionary, corpus, original_texts, int(number_of_topics))
-    #tm.printEvaluation(lmlist,c_v,number_of_topics,start,end)
+    lmlist, c_v=tm.evaluate_graph(dictionary, corpus, int(number_of_topics))
+    tm.printEvaluation(lmlist,c_v,number_of_topics,start,end)
+    
     
     print('Finished')
 
