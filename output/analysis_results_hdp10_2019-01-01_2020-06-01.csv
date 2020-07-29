@@ -1,0 +1,201 @@
+Topic,Term,Value
+0,b'stop ',0.003
+0,b'salute ', 0.003
+0,b'ireland ', 0.003
+0,b'stone ', 0.003
+0,b'told ', 0.002
+0,b'unveiled ', 0.002
+0,b'historic ', 0.002
+0,b'stint ', 0.002
+0,b'calvin ', 0.002
+0,b'nothing ', 0.002
+0,b'giving ', 0.002
+0,b'manchester ', 0.002
+0,b'girl ', 0.002
+0,b'quiz ', 0.002
+0,b'themed ', 0.002
+0,b'billy ', 0.002
+0,b'weird ', 0.002
+0,b'pro ', 0.002
+0,b'named ', 0.002
+0,b'kind', 0.002
+1,b'resident ',0.004
+1,b'project ', 0.003
+1,b'order ', 0.003
+1,b'eventually ', 0.003
+1,b'weather ', 0.002
+1,b'princess ', 0.002
+1,b'like ', 0.002
+1,b'defacing ', 0.002
+1,b'cousin ', 0.002
+1,b'remove ', 0.002
+1,b'dwr_memorial ', 0.002
+1,b'rally ', 0.002
+1,b'tolkein ', 0.002
+1,b'london ', 0.002
+1,b'couldnget ', 0.002
+1,b'veddy ', 0.002
+1,b'column ', 0.002
+1,b'collinstony ', 0.002
+1,b'folk ', 0.002
+1,b'plinth', 0.002
+2,b'presumably ',0.004
+2,b'butchart ', 0.003
+2,b'struggle ', 0.003
+2,b'bbcfootball ', 0.003
+2,b'wonderful ', 0.003
+2,b'victoria ', 0.003
+2,b'photoshopped ', 0.003
+2,b'post ', 0.002
+2,b'unit ', 0.002
+2,b'gbxanthems ', 0.002
+2,b'event ', 0.002
+2,b'scottish ', 0.002
+2,b'turnout ', 0.002
+2,b'obligatory ', 0.002
+2,b'curious ', 0.002
+2,b'conheid ', 0.002
+2,b'cumnock ', 0.002
+2,b'bridge ', 0.002
+2,b'photosgetty ', 0.002
+2,b'patent', 0.002
+3,b'sara ',0.003
+3,b'care ', 0.002
+3,b'september ', 0.002
+3,b'heed ', 0.002
+3,b'itonly ', 0.002
+3,b'davideclifford ', 0.002
+3,b'bloody ', 0.002
+3,b'foo ', 0.002
+3,b'shirt ', 0.002
+3,b'teamhalifax ', 0.002
+3,b'brexitparty_uk ', 0.002
+3,b'liked ', 0.002
+3,b'steelers ', 0.002
+3,b'senior ', 0.002
+3,b'use ', 0.002
+3,b'marble ', 0.002
+3,b'considered ', 0.002
+3,b'united ', 0.002
+3,b'unknown ', 0.002
+3,b'clue', 0.002
+4,b'club ',0.003
+4,b'stuck ', 0.003
+4,b'fuck ', 0.002
+4,b'nijelamos ', 0.002
+4,b'giant ', 0.002
+4,b'thatwhat ', 0.002
+4,b'cathedral ', 0.002
+4,b'conscious ', 0.002
+4,b'independent ', 0.002
+4,b'pretty ', 0.002
+4,b'blow ', 0.002
+4,b'plastic ', 0.002
+4,b'canremember ', 0.002
+4,b'statue ', 0.002
+4,b'worked ', 0.002
+4,b'far ', 0.002
+4,b'literally ', 0.002
+4,b'campus ', 0.002
+4,b'sun ', 0.002
+4,b'continental', 0.002
+5,b'cantag ',0.003
+5,b'senior ', 0.003
+5,b'close ', 0.003
+5,b'only ', 0.002
+5,b'central ', 0.002
+5,b'minister ', 0.002
+5,b'statue ', 0.002
+5,b'son ', 0.002
+5,b'nikonitalia ', 0.002
+5,b'colloquial ', 0.002
+5,b'lib ', 0.002
+5,b'displayed ', 0.002
+5,b'marked ', 0.002
+5,b'emphasis ', 0.002
+5,b'park ', 0.002
+5,b'resplendent ', 0.002
+5,b'nov ', 0.002
+5,b'eventually ', 0.002
+5,b'mounted ', 0.002
+5,b'cheaper', 0.002
+6,b'iran ',0.003
+6,b'fixed ', 0.003
+6,b'drop ', 0.003
+6,b'bottle ', 0.003
+6,b'gettyimages ', 0.002
+6,b'sale ', 0.002
+6,b'sensation ', 0.002
+6,b'compare ', 0.002
+6,b'toilet ', 0.002
+6,b'clue ', 0.002
+6,b'marked ', 0.002
+6,b'capturing ', 0.002
+6,b'cat ', 0.002
+6,b'fab ', 0.002
+6,b'pink ', 0.002
+6,b'thereloads ', 0.002
+6,b'already ', 0.002
+6,b'fineart ', 0.002
+6,b'preparing ', 0.002
+6,b'bell', 0.002
+7,b'think ',0.003
+7,b'iron ', 0.003
+7,b'follower ', 0.003
+7,b'filmed ', 0.003
+7,b'hanging ', 0.003
+7,b'secure ', 0.003
+7,b'celebrate ', 0.003
+7,b'featured ', 0.002
+7,b'sight ', 0.002
+7,b'apeoplesvote ', 0.002
+7,b'dubh ', 0.002
+7,b'wellesleyhants ', 0.002
+7,b'glesga ', 0.002
+7,b'installed ', 0.002
+7,b'mystery ', 0.002
+7,b'berkshire ', 0.002
+7,b'capacity ', 0.002
+7,b'fame ', 0.002
+7,b'falkirk ', 0.002
+7,b'backdrop', 0.002
+8,b'finalsay ',0.003
+8,b'cause ', 0.003
+8,b'jill ', 0.003
+8,b'megan ', 0.003
+8,b'resonate ', 0.003
+8,b'vandal ', 0.003
+8,b'felt ', 0.002
+8,b'surrey ', 0.002
+8,b'trick ', 0.002
+8,b'tradition ', 0.002
+8,b'commemorated ', 0.002
+8,b'memorialising ', 0.002
+8,b'uber ', 0.002
+8,b'email ', 0.002
+8,b'otd ', 0.002
+8,b'fantastic ', 0.002
+8,b'black ', 0.002
+8,b'lighter ', 0.002
+8,b'evening ', 0.002
+8,b'record', 0.002
+9,b'cone ',0.003
+9,b'caught ', 0.003
+9,b'spectacular ', 0.003
+9,b'horton ', 0.003
+9,b'kyourway ', 0.003
+9,b'newmarket ', 0.002
+9,b'theislefilm ', 0.002
+9,b'magnificent ', 0.002
+9,b'gull ', 0.002
+9,b'holbeinart ', 0.002
+9,b'ready ', 0.002
+9,b'installed ', 0.002
+9,b'surprise ', 0.002
+9,b'manchester ', 0.002
+9,b'arielle ', 0.002
+9,b'ceremonial ', 0.002
+9,b'bemusement ', 0.002
+9,b'weird ', 0.002
+9,b'tit ', 0.002
+9,b'tidbit', 0.002
