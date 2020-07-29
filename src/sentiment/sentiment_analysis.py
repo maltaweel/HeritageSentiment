@@ -34,11 +34,11 @@ class Sentiment:
     def get_affinity_score(self, tweet):
         
         # the score value
-        score=0
+        score=0.0
         
         #score if the length of the tweet is at least 1
         if len(tweet)>0:
-            score=self.afinn.score(tweet) / len(tweet)
+            score=self.afinn.score(tweet) / len(tweet.split())
             return score
         
         #otherwise no score
@@ -288,6 +288,7 @@ class Sentiment:
     def run(self):
         #load the data and run analysis
         self.loadData()
+  
         
         #finished
         print('Finished')
