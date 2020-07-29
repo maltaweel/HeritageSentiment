@@ -169,10 +169,10 @@ class Sentiment:
     Method to create time-based output for tweets.
     
     @param time- The day of when a given tweet is made
-    @paramr- output_directory- the output directory which is the sentiment directory
-    @param- day the day reference to associate with twitter data (retweets)
-    @param- retwts represents the retweet data used
-    @param- the file to output the results to.
+    @param output_directory- the output directory which is the sentiment directory
+    @param day- the day reference to associate with twitter data (retweets)
+    @param retwts- represents the retweet data used
+    @param f-the file to output the results to.
     '''
     def doTimeBasedOutput(self,date,output_directory,day,retwts,f):
         
