@@ -136,14 +136,14 @@ class NetworkWords():
     def displayNetwork(self,G):
         
         #create the subplot area to display network
-        fig, ax = plt.subplots(figsize=(20, 18))
+        fig, ax = plt.subplots(figsize=(14, 12))
 
         #create the network layout
         pos = nx.fruchterman_reingold_layout(G)
 
         # plot the network (red colour term nodes)
         nx.draw_networkx(G, pos,
-                 font_size=8,
+                 font_size=12,
                  width=2,
                  node_size=50,
                  edge_color='grey',
@@ -154,7 +154,7 @@ class NetworkWords():
        
         # plot the topic numbers (blue colour nodes)
         nx.draw_networkx(G, pos,
-                 font_size=8,
+                 font_size=12,
                  width=2,
                  node_size=120,
                  nodelist=["0","1","2","3","4","5","6","7","8","9"],
@@ -166,7 +166,7 @@ class NetworkWords():
         
         # Create offset labels
         for key, value in pos.items():
-            x, y = value[0]+.0135, value[1]+.045
+            x, y = value[0]+.00135, value[1]+.015
             ax.text(x, y,
                     s=key,
                     bbox=dict(facecolor='red', alpha=0.25),
@@ -198,6 +198,8 @@ def run():
     
     #output the network to a layout and figure in the figure folder
     nw.displayNetwork(G)
+    
+    print("Finished")
 
 #run the module
 if __name__ == '__main__':
