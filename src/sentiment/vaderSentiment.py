@@ -3,6 +3,7 @@ Created on Jan 28, 2021
 
 @author: maltaweel
 '''
+import re
 import os
 from os import listdir
 
@@ -15,8 +16,16 @@ from textblob import TextBlob
 from flair.models import TextClassifier
 from flair.data import Sentence
 
+from sentiment import explainer
+
 classifier = TextClassifier.load('en-sentiment')
 analyser = SentimentIntensityAnalyzer()
+
+pn=os.path.abspath(__file__)
+pn=pn.split("src")[0] 
+data=os.path.join(pn,'models/fasttext','sst5.ftz')
+
+from segtok.segmenter import split_single
 
 def sentiment_analyzer_scores(sentence):
     
@@ -32,10 +41,26 @@ def tokenizer(text: str) -> str:
     return tokenized_text
 
 def scoreFlair(text):
-    sentence = Sentence(text)
+    result = re.sub("<[a][^>]*>(.+?)</[a]>", 'Link.', text)
+    result = re.sub('&gt;', "", result)
+    result = re.sub('&#x27;', "'", result)
+    result = re.sub('&quot;', '"', result)
+    result = re.sub('&#x2F;', ' ', result)
+    result = re.sub('<p>', ' ', result)
+    result = re.sub('</i>', '', result)
+    result = re.sub('&#62;', '', result)
+    result = re.sub('<i>', ' ', result)
+    result = re.sub("\n", '', result)
+    
+    sentence = Sentence(result)
     classifier.predict(sentence)
     
     return sentence.labels
+
+def make_sentences(text):
+    """ Break apart text into a list of sentences """
+    sentences = [sent for sent in split_single(text)]
+    return sentences
 
 def main() -> None:
    
@@ -83,9 +108,14 @@ def main() -> None:
                         if text=='':
                             continue
                         #print("Generating LIME explanation for example {}: `{}`".format(i+1, text))
+                        
+                        
                         score = sentiment_analyzer_scores(text)
                         scoreS=TextBlob(text).sentiment.subjectivity
                         flair=scoreFlair(text)
+                        text=text.replace('\n',' ')
+#                       exp = explainer.explainer('fasttext', data, text, 1000)
+                       #p=exp.score
                         printData['positive']=score['pos']
                         printData['negative']=score['neg']
                         printData['neutral']=score['neu']
@@ -97,6 +127,7 @@ def main() -> None:
                         printData['message']=row['message']
                         output(writer,printData)
                         i+=1
+                        
                     except ValueError as err:
                         print(err)
                         continue
