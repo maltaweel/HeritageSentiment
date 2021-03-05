@@ -8,7 +8,8 @@ from os import listdir
 
 import csv
 from nltk.tokenize import sent_tokenize
-
+from langdetect import detect
+from langdetect.lang_detect_exception import LangDetectException
 
 '''
 Method to output the cleaned text data.
@@ -37,7 +38,21 @@ def output(results,fileOutput):
 def tokenize(text):
     texts=sent_tokenize(text)    
     
-    return texts  
+    return texts 
+
+def detection(text):
+    if len(text)<3:
+        return False
+    try:
+        d=detect(text)
+    
+        if d=='en':
+            return True
+        else:
+            return False
+    except LangDetectException:
+        return False
+        
 
 def openData():
     #get the pathway to the data
@@ -78,13 +93,17 @@ def openData():
                         
                     created_time=row['created_time']
                     
-                    texts=tokenize(message)
+                    detect=detection(message)
+                    if detect==True:
+                        texts=tokenize(message)
                     
-                    data['sentences']=texts
-                    data['from_id']=from_id
-                    data['from_name_id']=from_name
-                    data['created_time']=created_time
-                    results.append(data)
+                        data['sentences']=texts
+                        data['from_id']=from_id
+                        data['from_name_id']=from_name
+                        data['created_time']=created_time
+                        results.append(data)
+                    else:
+                        continue
                     
                 mod_f=f.split('.csv')[0]
                 mod_f=mod_f+'_sentences.csv'
