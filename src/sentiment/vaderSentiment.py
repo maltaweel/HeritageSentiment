@@ -16,8 +16,6 @@ from textblob import TextBlob
 from flair.models import TextClassifier
 from flair.data import Sentence
 
-from sentiment import explainer
-
 classifier = TextClassifier.load('en-sentiment')
 analyser = SentimentIntensityAnalyzer()
 
@@ -35,9 +33,13 @@ def sentiment_analyzer_scores(sentence):
 def tokenizer(text: str) -> str:
     "Tokenize input string using a spaCy pipeline"
     nlp = spacy.blank('en')
+    text=text.replace('.','')
+    text=text.replace('"','')
+    
     nlp.add_pipe(nlp.create_pipe('sentencizer'))  # Very basic NLP pipeline in spaCy
     doc = nlp(text)
     tokenized_text = ' '.join(token.text for token in doc)
+    tokenized_text=tokenized_text+' .'
     return tokenized_text
 
 def scoreFlair(text):
@@ -88,7 +90,7 @@ def main() -> None:
             
         #open file to read
 
-            with open(os.path.join(file_read,f),'r') as csvfile:
+            with open(os.path.join(file_read,f),'r',encoding="ISO-8859-1") as csvfile:
                 reader = csv.DictReader(csvfile)
             
                 
@@ -100,37 +102,42 @@ def main() -> None:
                 
                     #get the tweet text
                     text=row['message']
-                    
+                    sent=make_sentences(text)
                     i=0
-    
-                    try:
-                        text = tokenizer(text)  # Tokenize text using spaCy before explaining
-                        if text=='':
+                    
+                    for te in sent:
+                        try:
+                            te = tokenizer(te)  # Tokenize text using spaCy before explaining
+                            if te=='':
+                                continue
+                            #print("Generating LIME explanation for example {}: `{}`".format(i+1, text))
+                        
+                        
+                            score = sentiment_analyzer_scores(te)
+                            scoreS=TextBlob(te).sentiment.subjectivity
+                            flair=scoreFlair(te)
+                            te=te.replace('\n',' ')
+#                           exp = explainer.explainer('fasttext', data, text, 1000)
+                            #p=exp.score
+                            printData['positive']=score['pos']
+                            printData['negative']=score['neg']
+                            printData['neutral']=score['neu']
+                            printData['subjectivity']=scoreS
+                            printData['flair']=flair
+                            printData['compound']=score['compound']
+                            printData['created_time']=row['created_time']
+                            try:
+                                printData['_id']=row['_id']
+                            except:
+                                printData['_id']=row['from_id']
+                            
+                            printData['message']=te
+                            output(writer,printData)
+                            i+=1
+                        
+                        except ValueError as err:
+                            print(err)
                             continue
-                        #print("Generating LIME explanation for example {}: `{}`".format(i+1, text))
-                        
-                        
-                        score = sentiment_analyzer_scores(text)
-                        scoreS=TextBlob(text).sentiment.subjectivity
-                        flair=scoreFlair(text)
-                        text=text.replace('\n',' ')
-#                       exp = explainer.explainer('fasttext', data, text, 1000)
-                       #p=exp.score
-                        printData['positive']=score['pos']
-                        printData['negative']=score['neg']
-                        printData['neutral']=score['neu']
-                        printData['subjectivity']=scoreS
-                        printData['flair']=flair
-                        printData['compound']=score['compound']
-                        printData['created_time']=row['created_time']
-                        printData['_id']=row['_id']
-                        printData['message']=row['message']
-                        output(writer,printData)
-                        i+=1
-                        
-                    except ValueError as err:
-                        print(err)
-                        continue
                             
                     
                 print(f)    
