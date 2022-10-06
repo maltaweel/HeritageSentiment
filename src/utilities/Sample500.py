@@ -42,7 +42,14 @@ def loadData():
                     pos=row['positive']
                     neg=row['negative']
                     sent=row['sentence']
+                    tb_polarity=row['aspect tb polarity']
+                    tb_sub=row['aspect tb subjectivity']
+                    aspect=row['aspect flair']
                     
+                    if (float(tb_polarity)==0.0 or float(tb_sub)==0.0 or 
+                        float(aspect)==0.0):
+                        continue
+
                     if len(sent)<5:
                         continue
                     
